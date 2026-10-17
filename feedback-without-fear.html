@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Without Fear | Apoorva Joshi</title>
+<meta name="description" content="Why students fear using AI on their independent research coursework, and how a question-only, privacy-first AI feedback coach, approved by the school, can earn their trust.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Feedback Without Fear: An AI Coach Students Can Trust">
+<meta property="og:description" content="The students who would gain most from AI feedback are often the most afraid to use it. A coach, not a co-author: designing AI feedback around their fears.">
+<meta property="og:url" content="https://apoorvaaj.github.io/feedback-without-fear.html">
+<meta property="og:site_name" content="Apoorva Joshi">
+<meta property="og:image" content="https://apoorvaaj.github.io/preview.png">
+<meta property="og:image:secure_url" content="https://apoorvaaj.github.io/preview.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://apoorvaaj.github.io/preview.png">
+<link rel="canonical" href="https://apoorvaaj.github.io/feedback-without-fear.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a7178'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='white' text-anchor='middle'%3EAJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f3f6fa; --surface: #ffffff; --surface2: #e9eef5; --border: #d6dfea;
+    --accent: #0a7178; --accent3: #2b56a8; --text: #0f2240; --text-dim: #43536b; --text-dimmer: #5f6e84;
+    --warm: #a33a12;
+    --sans: Verdana, Geneva, Tahoma, sans-serif;
+    --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+
+  nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+        padding: 1.1rem 4rem; background: rgba(243,246,250,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+  .nav-logo span { color: var(--text-dim); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; margin: 0; }
+  .nav-links li { padding: 0; margin: 0; font-size: inherit; line-height: inherit; }
+  .nav-links li::before { display: none; }
+  .nav-links a { position: relative; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.25s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .nav-links a.active { color: var(--accent); }
+
+  article { max-width: 760px; margin: 0 auto; padding: 4.5rem 1.5rem 3rem; }
+  .kicker { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: bold;
+            display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+  .kicker::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+  .kicker .dim { color: var(--text-dimmer); font-weight: normal; }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.1rem, 5.3vw, 3.2rem); line-height: 1.12; margin: 1.1rem 0 1.6rem; }
+  h1 em { color: var(--accent); }
+  .byline { display: flex; align-items: center; gap: 0.9rem; padding-bottom: 2rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); }
+  .avatar { width: 46px; height: 46px; border-radius: 10px; background: var(--accent); color: #fff; font-family: var(--serif); font-size: 1.15rem;
+            display: flex; align-items: center; justify-content: center; flex: none; }
+  .byline b { display: block; font-size: 0.88rem; }
+  .byline span { font-size: 0.76rem; color: var(--text-dimmer); }
+
+  .lede { font-family: var(--serif); font-size: 1.45rem; line-height: 1.5; color: var(--text); margin-bottom: 1.6rem; }
+  p { font-size: 1rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.35rem; }
+  p strong, li strong { color: var(--text); }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: 1.75rem; line-height: 1.25; margin: 3rem 0 1.1rem; color: var(--text); }
+  h3 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; line-height: 1.3; margin: 2.2rem 0 0.9rem; color: var(--text); }
+  ul, ol { list-style: none; margin: 0 0 1.6rem; }
+  li { position: relative; padding-left: 1.5rem; margin-bottom: 0.95rem; font-size: 1rem; line-height: 1.8; color: var(--text-dim); }
+  ul > li::before { content: ''; position: absolute; left: 0.2rem; top: 0.72rem; width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg); }
+  ol { counter-reset: n; }
+  ol > li { counter-increment: n; padding-left: 2rem; }
+  ol > li::before { content: counter(n); position: absolute; left: 0; top: 0.18rem; width: 1.35rem; height: 1.35rem; border: 1px solid var(--accent);
+                    color: var(--accent); font-size: 0.68rem; display: flex; align-items: center; justify-content: center; }
+  a { color: var(--accent); }
+
+  .pull { margin: 2.6rem 0; padding: 1.6rem 1.8rem; border-left: 3px solid var(--accent); background: var(--surface); }
+  .pull p { font-family: var(--serif); font-size: 1.45rem; line-height: 1.45; color: var(--text); margin: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 1.6rem 0 2rem; border: 1px solid var(--border); background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; line-height: 1.55; min-width: 560px; }
+  th { text-align: left; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+       background: var(--surface2); padding: 0.75rem 0.9rem; border-bottom: 1px solid var(--border); }
+  td { padding: 0.75rem 0.9rem; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { color: var(--text); font-weight: bold; }
+  th.spont { color: var(--warm); }
+  td.lean-s { color: var(--warm); font-weight: bold; }
+  td.lean-d { color: var(--accent); font-weight: bold; }
+
+  /* Pros and cons, side by side */
+  .pc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0 2rem; }
+  .pc { background: var(--surface); border: 1px solid var(--border); padding: 1.3rem 1.3rem 0.4rem; }
+  .pc-label { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: bold; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
+  .pc.pro .pc-label { color: var(--accent); }
+  .pc.con .pc-label { color: var(--warm); }
+  .pc li { font-size: 0.88rem; line-height: 1.7; margin-bottom: 0.8rem; }
+  .pc.con ul > li::before { background: var(--warm); }
+
+  /* Process strips */
+  .strip { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0.4rem 0 1.6rem; }
+  .strip span { font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 0.6rem; border: 1px solid var(--border); background: var(--surface2); color: var(--text-dim); }
+  .strip span.key { border-color: var(--accent); color: var(--accent); background: rgba(10,113,120,0.08); }
+  .strip span.warn { border-color: var(--warm); color: var(--warm); background: rgba(163,58,18,0.06); }
+  .strip i { font-style: normal; color: var(--text-dimmer); font-size: 0.75rem; }
+
+  .cta { margin: 3.2rem 0 0; padding: 2rem; background: var(--surface); border: 1px solid var(--border); }
+  .cta h3 { font-family: var(--serif); font-weight: 500; font-size: 1.45rem; margin: 0 0 0.5rem; }
+  .cta p { font-size: 0.9rem; margin-bottom: 1.3rem; }
+  .cta-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.08em;
+         text-transform: uppercase; text-decoration: none; padding: 0.85rem 1.4rem; border: 1px solid var(--accent); }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.primary:hover { background: var(--text); border-color: var(--text); }
+  .btn.secondary { color: var(--text-dim); border-color: var(--border); background: transparent; }
+  .btn.secondary:hover { color: var(--accent); border-color: var(--accent); }
+
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: flex; justify-content: center; font-size: 0.68rem;
+           color: var(--text-dimmer); letter-spacing: 0.06em; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0.9rem 1.25rem; }
+    .nav-logo span { display: none; }
+    .nav-links { gap: 0.75rem; }
+    .nav-links a { font-size: 0.62rem; letter-spacing: 0.04em; white-space: nowrap; }
+    article { padding: 2.6rem 1.25rem 2rem; }
+    .lede { font-size: 1.25rem; }
+    h2 { font-size: 1.5rem; margin-top: 2.4rem; }
+    .pull { padding: 1.2rem 1.2rem; }
+    .pull p { font-size: 1.25rem; }
+    .pc-grid { grid-template-columns: 1fr; }
+    .cta { padding: 1.4rem 1.2rem; }
+    .btn { width: 100%; }
+    footer { flex-direction: column; gap: 0.4rem; text-align: center; padding: 1.4rem 1.25rem; }
+  }
+  @media (max-width: 400px) {
+    nav { padding-left: 1rem; padding-right: 1rem; }
+    .nav-links { gap: 0.6rem; }
+    .nav-links a { font-size: 0.58rem; letter-spacing: 0.03em; }
+  }
+  @media print {
+    nav, .cta-actions { display: none; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">AJ<span> / Portfolio</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#profile">Profile</a></li>
+    <li><a href="ba-to-ai-consultant.html">My Path</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#blogs" class="active">Blogs</a></li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+</nav>
+
+<article>
+  <div class="kicker">AI · Education · Product Design <span class="dim">· Oct 2026 · 6 min read</span></div>
+  <h1>Feedback Without Fear: <em>An AI Coach Students Can Trust</em></h1>
+  <div class="byline">
+    <div class="avatar" aria-hidden="true">AJ</div>
+    <div><b>Apoorva Joshi</b><span>AI Solution Consultant (Presales) · Product Manager</span></div>
+  </div>
+
+  <p class="lede">The students who would gain most from AI feedback on their research coursework are often the ones most afraid to use it. Their fears are reasonable, and they can be solved by design.</p>
+  <p>This post is about a product I'm designing: an AI feedback coach for senior school students working on their independent research coursework, the long, individually designed investigations and essays that count towards their final qualification. It starts with a student, because that is where the idea started for me.</p>
+
+  <h2>A finished draft and a closed laptop</h2>
+  <p>It began at a dining table, with a student who had a good question and no safe place to ask it.</p>
+  <p>A few months ago I watched a student I care about sit with the finished first draft of her research investigation: weeks of experiments, a spreadsheet of results and three thousand careful words. She had one question: <em>is this any good?</em></p>
+  <p>Her supervisor was kind but stretched, with a long list of students and firm limits on how much feedback the rules allow on a draft. A friend at another school had a teacher who walked through every section with her. Same programme, same criteria, very different help.</p>
+  <p>So I suggested the obvious thing: why not ask an AI to look at it?</p>
+  <p>She closed the laptop. What if it keeps my work? What if it ends up somewhere and my investigation is flagged as plagiarised? What if someone thinks the AI wrote it?</p>
+  <p>She wasn't being dramatic. In her programme, academic integrity is close to sacred, and she had heard enough stories to be scared. She spent the next week second-guessing her draft, alone. She wasn't wrong to be careful. The problem was that nobody had given her a safe option.</p>
+
+  <h2>Good feedback shouldn't depend on luck</h2>
+  <p>Independent research coursework is where students do their most independent work, and it is also where the help they get varies most.</p>
+  <p>Students design an investigation, analyse their own data and build an argument over thousands of words. Whether they get good feedback along the way depends on things they don't control:</p>
+  <ul>
+    <li><strong>Time.</strong> Some supervisors have it; others are juggling too many students.</li>
+    <li><strong>Experience.</strong> A supervisor new to a subject's criteria may not know which questions to ask.</li>
+    <li><strong>The relationship.</strong> Sometimes it simply doesn't work: a clash of personalities, a sense of being overlooked, or a worry that the feedback isn't quite fair.</li>
+  </ul>
+  <p>None of this is the student's fault, but all of it shows up in their marks. AI could level that field. Yet students hold back for two reasons:</p>
+  <ol>
+    <li><strong>Privacy and ownership.</strong> They don't know where their draft goes, who keeps it, or whether it trains a model.</li>
+    <li><strong>Integrity.</strong> They fear AI-written words will creep into their work, and that using AI at all will look like cheating.</li>
+  </ol>
+
+  <h2>Why today's options fall short</h2>
+  <p>Each option a student has today solves one part of the problem and leaves another part open.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Option</th><th>What it offers</th><th>What it leaves open</th></tr></thead>
+      <tbody>
+        <tr><td>General-purpose chatbot</td><td>Capable, fast and available at midnight</td><td>Built to help with anything, so it will happily rewrite a paragraph when asked. Under deadline pressure, that is one copy-paste away from malpractice. And the student has to trust account settings they may not understand.</td></tr>
+        <tr><td>Pasting the draft in pieces</td><td>Feels safer to the student</td><td>The text still goes to the same place. The feedback also gets worse: whether a conclusion answers the research question, or an evaluation links back to the method, can only be judged across the whole piece.</td></tr>
+        <tr><td>Private tutor</td><td>Expert, personal attention</td><td>Expensive and uneven, and available mainly to families who can afford it, which widens the very gap it should close.</td></tr>
+        <tr><td>The school supervisor</td><td>The authority on the work</td><td>Limited time, rules on how much draft feedback is allowed, and sometimes a relationship that isn't working.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>What's missing is not more AI. It is AI designed for an integrity-sensitive task, in an environment the school itself has approved.</p>
+
+  <h2>A coach, not a co-author</h2>
+  <p>I'm designing the tool around students' fears rather than in spite of them, so each fear maps to a specific design decision.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>The student's worry</th><th>The design answer</th></tr></thead>
+      <tbody>
+        <tr><td>"Will AI words end up in my work?"</td><td>It only asks questions. It never rewrites a sentence or offers wording to paste in, and that is built into the system, not a setting anyone can switch off.</td></tr>
+        <tr><td>"Will it keep my work?"</td><td>The draft is processed and discarded: never stored, never used to train any AI model. Name and school are removed before anything reaches the AI, and the student sees exactly what is sent. Even the school sees only that a review happened, never the draft or the feedback.</td></tr>
+        <tr><td>"Am I allowed to use this?"</td><td>Students sign in with their school account to a tool their school's programme coordinator has chosen. "Am I allowed?" becomes "my school gave me this."</td></tr>
+        <tr><td>"Will it look like cheating?"</td><td>Every review comes with a receipt that makes acknowledging AI use simple and transparent.</td></tr>
+        <tr><td>"Is the feedback fair?"</td><td>Every student gets the same consistent, criterion-based feedback, whoever their supervisor is.</td></tr>
+        <tr><td>"Will it understand my argument?"</td><td>It reads the whole piece and gives feedback on structure and argument, criterion by criterion, not just on sentences.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The first rule matters most. Every comment is a question tied to the student's own words, the kind a great supervisor asks: <em>how would someone repeating your method know when to take each reading?</em></p>
+  <p>When a question is unclear, the student can ask for a plain-language explanation, see which part of the criteria it relates to, find where to read more, or draft a question to take to their teacher. The AI helps them understand. It never does the thinking for them.</p>
+
+  <h2>Why rules, not promises</h2>
+  <p>Students will trust limits the system enforces, not instructions the model is politely asked to follow.</p>
+  <p>This is the same principle behind my own recent builds. In <a href="index.html#projects">Attic</a>, my Gmail cleanup agent, the AI proposes actions but fixed guardrails (never delete, protect emails from real people) are re-checked on the server and cannot be disabled, even through crafted API calls. In <a href="index.html#projects">MealPartner</a>, the model never writes recipe content or links; code decides and the model assists. A feedback coach that never writes text for the student follows the same logic. If the system cannot produce a rewrite, no prompt can talk it into one.</p>
+  <p>It also follows from the school research I led with the UWCSEA Parent Association's EdTech Group, which I wrote about in <a href="https://medium.com/@apoorva.aj/not-more-tech-not-less-tech-intentional-tech-6fa0f1c4f865" target="_blank" rel="noopener">Not More Tech, Not Less Tech</a>. Two ideas from that work shaped this one: a tool should earn its place by adding learning value over the analogue alternative, and with AI the real question is thinking, not access. A coach that only asks questions is designed to pass both tests.</p>
+  <div class="pull"><p>An AI tool earns a student's trust the same way it earns its place in a classroom: by what it refuses to do.</p></div>
+
+  <h2>What it is not</h2>
+  <p>It is not a replacement for teachers; it makes sure no student is left without a second pair of eyes.</p>
+  <ul>
+    <li><strong>Not a co-author.</strong> It never writes, rewrites or suggests wording.</li>
+    <li><strong>Not a substitute supervisor.</strong> Teachers remain the authority and still give the feedback that counts.</li>
+    <li><strong>Not a privilege.</strong> It is offered through the school to every student, not only to those who can pay for extra help.</li>
+  </ul>
+
+  <h2>Back to the dining table</h2>
+  <p>I think often about that closed laptop.</p>
+  <p>The student did fine in the end, but she spent a week anxious and alone with a question that a few good prompts could have helped her answer herself. Every student deserves feedback that doesn't depend on which school they attend or which teacher they were assigned, and every student deserves to get it without risking their work or their integrity.</p>
+  <p>Part two, <a href="building-quaestio.html">Building Quaestio</a>, explains how I turned this idea into a product specification, the decisions behind it, and what I learned along the way.</p>
+
+  <div class="cta">
+    <h3>Piloting with schools</h3>
+    <p>I'm looking for a small number of schools to pilot this with their senior students on independent research coursework, starting with the sciences and mathematics. If you're a coordinator, teacher or head of school who recognises this story, I'd love to hear from you. I'm also open to roles in AI solution consulting (presales) and product management.</p>
+    <div class="cta-actions">
+      <a class="btn primary" href="https://www.linkedin.com/in/apoorva-joshi" target="_blank" rel="noopener">Connect on LinkedIn →</a>
+      <a class="btn secondary" href="building-quaestio.html">Read part two</a>
+      <a class="btn secondary" href="index.html#blogs">More posts</a>
+    </div>
+  </div>
+</article>
+
+
+<footer>
+  <span>© 2026 Apoorva Joshi · Singapore</span>
+</footer>
+
+<!-- Visitor analytics: GoatCounter -->
+<script data-goatcounter="https://apoorvaaj.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

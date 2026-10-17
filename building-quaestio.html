@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Quaestio | Apoorva Joshi</title>
+<meta name="description" content="How I turned a student's fear of AI into Quaestio, a question-only feedback tool for student research coursework: the requirements, the technical and business decisions, and what I learned as a product manager.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building Quaestio: How I Specified an AI Product Schools Can Trust">
+<meta property="og:description" content="From a closed laptop to a 230-requirement specification: the decisions behind a question-only AI feedback tool, and seven lessons in AI product management.">
+<meta property="og:url" content="https://apoorvaaj.github.io/building-quaestio.html">
+<meta property="og:site_name" content="Apoorva Joshi">
+<meta property="og:image" content="https://apoorvaaj.github.io/preview.png">
+<meta property="og:image:secure_url" content="https://apoorvaaj.github.io/preview.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://apoorvaaj.github.io/preview.png">
+<link rel="canonical" href="https://apoorvaaj.github.io/building-quaestio.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a7178'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' fill='white' text-anchor='middle'%3EAJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f3f6fa; --surface: #ffffff; --surface2: #e9eef5; --border: #d6dfea;
+    --accent: #0a7178; --accent3: #2b56a8; --text: #0f2240; --text-dim: #43536b; --text-dimmer: #5f6e84;
+    --warm: #a33a12;
+    --sans: Verdana, Geneva, Tahoma, sans-serif;
+    --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+
+  nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+        padding: 1.1rem 4rem; background: rgba(243,246,250,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+  .nav-logo span { color: var(--text-dim); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; margin: 0; }
+  .nav-links li { padding: 0; margin: 0; font-size: inherit; line-height: inherit; }
+  .nav-links li::before { display: none; }
+  .nav-links a { position: relative; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.25s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .nav-links a.active { color: var(--accent); }
+
+  article { max-width: 760px; margin: 0 auto; padding: 4.5rem 1.5rem 3rem; }
+  .kicker { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: bold;
+            display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
+  .kicker::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+  .kicker .dim { color: var(--text-dimmer); font-weight: normal; }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(2.1rem, 5.3vw, 3.2rem); line-height: 1.12; margin: 1.1rem 0 1.6rem; }
+  h1 em { color: var(--accent); }
+  .byline { display: flex; align-items: center; gap: 0.9rem; padding-bottom: 2rem; margin-bottom: 2.4rem; border-bottom: 1px solid var(--border); }
+  .avatar { width: 46px; height: 46px; border-radius: 10px; background: var(--accent); color: #fff; font-family: var(--serif); font-size: 1.15rem;
+            display: flex; align-items: center; justify-content: center; flex: none; }
+  .byline b { display: block; font-size: 0.88rem; }
+  .byline span { font-size: 0.76rem; color: var(--text-dimmer); }
+
+  .lede { font-family: var(--serif); font-size: 1.45rem; line-height: 1.5; color: var(--text); margin-bottom: 1.6rem; }
+  p { font-size: 1rem; line-height: 1.85; color: var(--text-dim); margin-bottom: 1.35rem; }
+  p strong, li strong { color: var(--text); }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: 1.75rem; line-height: 1.25; margin: 3rem 0 1.1rem; color: var(--text); }
+  h3 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; line-height: 1.3; margin: 2.2rem 0 0.9rem; color: var(--text); }
+  ul, ol { list-style: none; margin: 0 0 1.6rem; }
+  li { position: relative; padding-left: 1.5rem; margin-bottom: 0.95rem; font-size: 1rem; line-height: 1.8; color: var(--text-dim); }
+  ul > li::before { content: ''; position: absolute; left: 0.2rem; top: 0.72rem; width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg); }
+  ol { counter-reset: n; }
+  ol > li { counter-increment: n; padding-left: 2rem; }
+  ol > li::before { content: counter(n); position: absolute; left: 0; top: 0.18rem; width: 1.35rem; height: 1.35rem; border: 1px solid var(--accent);
+                    color: var(--accent); font-size: 0.68rem; display: flex; align-items: center; justify-content: center; }
+  a { color: var(--accent); }
+
+  .pull { margin: 2.6rem 0; padding: 1.6rem 1.8rem; border-left: 3px solid var(--accent); background: var(--surface); }
+  .pull p { font-family: var(--serif); font-size: 1.45rem; line-height: 1.45; color: var(--text); margin: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 1.6rem 0 2rem; border: 1px solid var(--border); background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; line-height: 1.55; min-width: 560px; }
+  th { text-align: left; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+       background: var(--surface2); padding: 0.75rem 0.9rem; border-bottom: 1px solid var(--border); }
+  td { padding: 0.75rem 0.9rem; border-bottom: 1px solid var(--border); color: var(--text-dim); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { color: var(--text); font-weight: bold; }
+  .tag { display: inline-block; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: bold; padding: 0.15rem 0.45rem;
+         border: 1px solid; margin-top: 0.35rem; white-space: nowrap; }
+  .tag.biz { color: var(--warm); border-color: var(--warm); background: rgba(163,58,18,0.06); }
+  .tag.tech { color: var(--accent); border-color: var(--accent); background: rgba(10,113,120,0.08); }
+  td s { color: var(--text-dimmer); }
+
+  /* Two columns, side by side */
+  .pc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0 2rem; }
+  .pc { background: var(--surface); border: 1px solid var(--border); padding: 1.3rem 1.3rem 0.4rem; }
+  .pc-label { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: bold; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
+  .pc.pro .pc-label { color: var(--accent); }
+  .pc.con .pc-label { color: var(--accent3); }
+  .pc li { font-size: 0.88rem; line-height: 1.7; margin-bottom: 0.8rem; }
+  .pc.con ul > li::before { background: var(--accent3); }
+
+  /* Process strips */
+  .strip { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0.4rem 0 1.6rem; }
+  .strip span { font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.4rem 0.6rem; border: 1px solid var(--border); background: var(--surface2); color: var(--text-dim); }
+  .strip span.key { border-color: var(--accent); color: var(--accent); background: rgba(10,113,120,0.08); }
+  .strip span.warn { border-color: var(--warm); color: var(--warm); background: rgba(163,58,18,0.06); }
+  .strip i { font-style: normal; color: var(--text-dimmer); font-size: 0.75rem; }
+
+  /* Key numbers */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin: 1.4rem 0 2.2rem; }
+  .stat { background: var(--surface); border: 1px solid var(--border); padding: 1rem 1rem 0.9rem; }
+  .stat b { display: block; font-family: var(--serif); font-weight: 500; font-size: 2rem; line-height: 1.1; color: var(--accent); }
+  .stat span { display: block; font-size: 0.72rem; line-height: 1.45; color: var(--text-dim); margin-top: 0.35rem; }
+
+  .thanks { margin: 2rem 0; padding: 1.4rem 1.6rem; background: rgba(10,113,120,0.06); border: 1px solid rgba(10,113,120,0.25); }
+  .thanks p { margin: 0; font-size: 0.95rem; }
+
+  .cta { margin: 3.2rem 0 0; padding: 2rem; background: var(--surface); border: 1px solid var(--border); }
+  .cta h3 { font-family: var(--serif); font-weight: 500; font-size: 1.45rem; margin: 0 0 0.5rem; }
+  .cta p { font-size: 0.9rem; margin-bottom: 1.3rem; }
+  .cta-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.08em;
+         text-transform: uppercase; text-decoration: none; padding: 0.85rem 1.4rem; border: 1px solid var(--accent); }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.primary:hover { background: var(--text); border-color: var(--text); }
+  .btn.secondary { color: var(--text-dim); border-color: var(--border); background: transparent; }
+  .btn.secondary:hover { color: var(--accent); border-color: var(--accent); }
+
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 4rem; display: flex; justify-content: center; font-size: 0.68rem;
+           color: var(--text-dimmer); letter-spacing: 0.06em; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0.9rem 1.25rem; }
+    .nav-logo span { display: none; }
+    .nav-links { gap: 0.75rem; }
+    .nav-links a { font-size: 0.62rem; letter-spacing: 0.04em; white-space: nowrap; }
+    article { padding: 2.6rem 1.25rem 2rem; }
+    .lede { font-size: 1.25rem; }
+    h2 { font-size: 1.5rem; margin-top: 2.4rem; }
+    .pull { padding: 1.2rem 1.2rem; }
+    .pull p { font-size: 1.25rem; }
+    .pc-grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .cta { padding: 1.4rem 1.2rem; }
+    .btn { width: 100%; }
+    footer { flex-direction: column; gap: 0.4rem; text-align: center; padding: 1.4rem 1.25rem; }
+  }
+  @media (max-width: 400px) {
+    nav { padding-left: 1rem; padding-right: 1rem; }
+    .nav-links { gap: 0.6rem; }
+    .nav-links a { font-size: 0.58rem; letter-spacing: 0.03em; }
+  }
+  @media print {
+    nav, .cta-actions { display: none; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">AJ<span> / Portfolio</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#profile">Profile</a></li>
+    <li><a href="ba-to-ai-consultant.html">My Path</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#blogs" class="active">Blogs</a></li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+</nav>
+
+<article>
+  <div class="kicker">Product Management · AI · Education <span class="dim">· Oct 2026 · 9 min read</span></div>
+  <h1>Building Quaestio: <em>How I Specified an AI Product Schools Can Trust</em></h1>
+  <div class="byline">
+    <div class="avatar" aria-hidden="true">AJ</div>
+    <div><b>Apoorva Joshi</b><span>AI Solution Consultant (Presales) · Product Manager</span></div>
+  </div>
+
+  <p class="lede">In my last post I described a student who closed her laptop rather than ask an AI for feedback on her research. This is the sequel: how I turned that moment into a product, the decisions that shaped it, and what I learned as a product manager along the way.</p>
+  <p>If you haven't read <a href="feedback-without-fear.html">Feedback Without Fear</a>, the short version is this. Students doing independent research coursework need a critical reader, and the help they get depends on luck: which school, which supervisor, how much time that supervisor has. AI could level the field, but students are afraid to use it. They worry their work will be kept, that AI words will creep into it, and that using AI at all will look like cheating.</p>
+  <p>That post was about the <em>why</em>. This one is about the <em>how</em>.</p>
+
+  <h2>Meet Quaestio</h2>
+  <p>The product now has a name. <strong>Quaestio</strong> (say it <em>KWY-stee-oh</em>) was how medieval universities taught: by working through hard questions rather than handing out conclusions. That is exactly what the product does, so the tagline wrote itself: <strong>Questions, never answers.</strong></p>
+  <p>Quaestio is a web application that a school authorises for its students. A student uploads a draft, checks a preview with their personal details already removed, and gets back a set of questions in the margin, each tied to a passage of their own text. They can accept a question, reject it with a reason, or ask to understand it better. They can't chat with it, and it can't write anything they could paste into their work. When the session ends, their draft is gone.</p>
+
+  <div class="stats">
+    <div class="stat"><b>230+</b><span>numbered requirements across 14 sections</span></div>
+    <div class="stat"><b>28</b><span>acceptance criteria that must pass before v1 ships</span></div>
+    <div class="stat"><b>9</b><span>master guardrails no one can switch off</span></div>
+    <div class="stat"><b>0</b><span>lines of code written so far, by design</span></div>
+  </div>
+
+  <h2>How the requirements took shape</h2>
+  <p>I followed the same discipline I described in <a href="spontaneous-vs-deliberate.html">Spontaneous vs Deliberate</a>: requirements are the product until every open question is closed. For Quaestio, that meant working outwards from the student's fear, not inwards from a feature list.</p>
+  <div class="strip" aria-label="Requirements process">
+    <span class="key">Student's fear</span><i>→</i><span class="key">Principles</span><i>→</i><span>Users and roles</span><i>→</i><span>Numbered requirements</span><i>→</i><span class="warn">Decision log</span><i>→</i><span>Architecture</span><i>→</i><span>Use case</span>
+  </div>
+  <ol>
+    <li><strong>Principles first.</strong> Before any feature, I wrote five principles that every requirement had to respect: <em>coach, never co-author; never train, never remember; the school owns the rules within a locked baseline; prove it; and independent of teachers.</em> When two requirements conflicted later, the principles settled it.</li>
+    <li><strong>Roles, with a "cannot do" column.</strong> The roles table lists what each user can do and, just as carefully, what they cannot. The school's coordinator can tighten the rules but never loosen them. School admins can track usage but never see a student's draft or feedback. Even the provider's own administrators cannot read student work, because none is stored.</li>
+    <li><strong>Every requirement numbered and testable.</strong> "Students' work is safe" isn't a requirement. "No document, payload, feedback or drill-down text exists in storage, logs, error reports or analytics after a review" is, because a test can check it. Each trust claim in the specification maps to an automated test or an acceptance criterion.</li>
+    <li><strong>A dated decision log.</strong> Each open question was closed with a dated decision, the reason, and the section it changed. That log turned out to be the most useful page in the document.</li>
+    <li><strong>Then the architecture and the business case.</strong> Only once the requirements were stable did I work through a proposed architecture and a use case written for the people who will actually approve it: a school's data protection officer and IT security team.</li>
+  </ol>
+
+  <h2>The decisions that shaped it</h2>
+  <p>A product is the sum of its decisions. These are the ones that changed Quaestio most, with the options I weighed. Some are technical, some are commercial, and the interesting ones are both.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Question</th><th>Options I weighed</th><th>What I chose, and why</th></tr></thead>
+      <tbody>
+        <tr><td>Where does it run?<br><span class="tag tech">Technical</span> <span class="tag biz">Business</span></td><td>A small model running offline on the student's laptop; a downloadable app; a web app the school authorises</td><td><strong>A school-authorised web app.</strong> Students trust what their school gives them more than a download from someone they've never heard of. And judging whether a conclusion answers a research question set three thousand words earlier needs a frontier model, not one small enough to run on a laptop.</td></tr>
+        <tr><td>Which model?<br><span class="tag tech">Technical</span></td><td>A lightweight local model; one large model for everything; different models for different jobs</td><td><strong>Route each task to the cheapest model that does it well.</strong> A frontier model for the main review, which needs to reason across a whole argument, and smaller models for the readiness check and the safety check. Two of the four drill-down options need no model at all; they come from a teacher-approved knowledge base.</td></tr>
+        <tr><td>How do students talk to the AI?<br><span class="tag tech">Technical</span></td><td>A chat box; a chat box with filters; fixed buttons only</td><td><strong>Buttons only, no text box anywhere.</strong> This one decision removed both of my biggest risks. A student can't ask for a rewrite, and a document can't smuggle in instructions, because there is no instruction channel to the model at all.</td></tr>
+        <tr><td>Should teachers be on the platform?<br><span class="tag biz">Business</span></td><td>Teacher accounts with access to feedback; no teacher role</td><td><strong>No teacher accounts.</strong> Quaestio is an independent second reader, valuable precisely because it sits outside the teaching relationship. Instead, one drill-down option helps the student draft a question to take to their teacher, so teachers stay at the centre.</td></tr>
+        <tr><td>What does the school see?<br><span class="tag biz">Business</span> <span class="tag tech">Technical</span></td><td>Full feedback; summaries; activity only</td><td><strong>Who, when and where, never what.</strong> Feedback content lives only in the student's browser session. There is nothing on the server for anyone to look at.</td></tr>
+        <tr><td>What do we keep for disputes?<br><span class="tag tech">Technical</span></td><td>Redacted copies of what was sent; metadata only</td><td><strong>Metadata only, even for disputes.</strong> Tempting as it was to keep redacted payloads "just in case", every copy is a liability. A receipt with a one-way file fingerprint can prove a file was reviewed without anyone holding its content.</td></tr>
+        <tr><td>How is it priced?<br><span class="tag biz">Business</span></td><td>A flat school licence; unlimited use; per student per year</td><td><strong>Per student per year</strong>, priced by subjects, the number of reviews per subject (two as standard) and drill-downs per question. The allowances are enforced in the database, not just the interface.</td></tr>
+        <tr><td>What happens when a review is wasted?<br><span class="tag biz">Business</span> <span class="tag tech">Technical</span></td><td>Count every upload; let schools grant extras; protect reviews by design</td><td><strong>Protect the student's paid reviews.</strong> A readiness check stops outlines and wrong files before a review is used. Any safety failure withholds output and doesn't count. A review lost to a technical fault can be restored, through a controlled three-step workflow.</td></tr>
+        <tr><td>Where do we launch?<br><span class="tag biz">Business</span></td><td>Global from day one; one region first</td><td><strong>Singapore first</strong>, with hosting, processing and logs all in the region and compliance with Singapore's data protection law at launch. Other regions follow once their rules are met.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Working with Claude</h2>
+  <p>I want to be open about how this was made, because it's part of the story. I developed Quaestio in conversation with <strong>Claude</strong>, Anthropic's AI assistant, from the first rough idea to the final use case.</p>
+  <div class="pc-grid">
+    <div class="pc pro">
+      <div class="pc-label">What I did</div>
+      <ul>
+        <li>Started from a real student and her fears, and set the five principles.</li>
+        <li>Made every product and commercial decision, and recorded why.</li>
+        <li>Chose the users, the scope, the pricing model and the launch market.</li>
+        <li>Read every requirement, challenged the drafts and decided what stayed.</li>
+      </ul>
+    </div>
+    <div class="pc con">
+      <div class="pc-label">Where Claude helped</div>
+      <ul>
+        <li>Turned my decisions into precise, numbered, testable requirements.</li>
+        <li>Asked the awkward questions that surface edge cases.</li>
+        <li>Suggested the name, and advised keeping exam-board trademarks out of it.</li>
+        <li>Helped draw the architecture and wrote the use case for schools' security reviewers.</li>
+      </ul>
+    </div>
+  </div>
+  <p>Two moments stood out. When I chose the name, Claude didn't just suggest options; it checked for clashes and told me that one of its own favourites was already taken in exactly my market. And when it wrote the use case, it wouldn't let the document claim more than the requirements commit to. The architecture sketch said "zero-retention arrangement" as if it were done; the use case says it must be confirmed in writing before launch, because that is the truth.</p>
+  <div class="thanks"><p><strong>Thank you, Claude.</strong> You made me faster, and more importantly you made the work more honest. You drafted; I decided. That's the right way round, and it's exactly the relationship I want Quaestio to have with students.</p></div>
+
+  <h2>Seven things I learned</h2>
+  <ol>
+    <li><strong>Trust is a requirement, and it needs someone to sign for it.</strong> The strongest trust signal turned out not to be technical at all. "Am I allowed to use this?" becomes "my school gave me this" the moment a school authorises the tool. Designing for the school as the buyer, and the student as the user, made the trust question much easier to answer.</li>
+    <li><strong>My best pitch was the wrong product.</strong> My first idea was a small model running offline on the student's laptop: "turn your wifi off and nothing leaves your machine." It was a great line, but it didn't survive contact with the real problem. Asking students to install software from a developer they'd never heard of wouldn't win their trust, and feedback on a whole argument needs a far more capable model than a laptop can run. The final specification goes further and forbids the opposite mistake: Quaestio must never claim that documents don't leave the student's device. A precise promise beats a catchy one.</li>
+    <li><strong>Write the "never" list first.</strong> The out-of-scope list and the master guardrails shaped Quaestio more than any feature did. Removing the chat box solved ghost-writing and prompt injection in one move. Saying no early is cheaper than building filters later.</li>
+    <li><strong>Business rules are product features.</strong> Once reviews were part of a paid licence, a whole set of features followed: a readiness check so reviews aren't wasted, a rule that failed reviews don't count, a restore workflow, and a rule that non-payment never cuts students off automatically near a deadline. Pricing isn't something you bolt on after the design; it changes the design.</li>
+    <li><strong>Use the cheapest model that does each job well.</strong> Model choice is a routing decision, not a single choice. The frontier model only does the work that needs it; the readiness check gets prose only, with graphs and equations replaced by markers; and some answers need no model at all. That's better for cost, speed and safety.</li>
+    <li><strong>Define "good" in numbers before any code exists.</strong> Safe feedback that isn't useful is still a failed product. So the specification sets targets: at least 80% of questions rated relevant by teachers before each release, at least 60% accepted by students in the pilot, and zero document text in any log. If you can't measure good, you can't argue about it productively.</li>
+    <li><strong>AI speeds up drafting; the judgement stays human.</strong> Working with Claude, I produced in days what would have taken me weeks as a business analyst. But the speed only helped because I treated every draft as a proposal, kept a dated decision log, and read every line. The skill that mattered most wasn't prompting. It was deciding.</li>
+  </ol>
+  <div class="pull"><p>The most important requirements in an AI product are the things it must never do, and the proof that it can't.</p></div>
+
+  <h2>What's next</h2>
+  <p>The specification is complete except for one open item: the pilot school. Before launch, a few things still need to happen, and I'd rather say them plainly than pretend they're done: written confirmation of the model provider's no-training and zero-retention terms, an independent penetration test, and testing that the redaction catches names common in Singapore, which general-purpose tools often miss.</p>
+  <p>Then comes the part I'm most looking forward to: putting Quaestio in front of real students, measuring whether its questions actually help, and changing it based on what they tell us. Every review gives students three buttons, and every press is a signal about which questions earn their place.</p>
+
+  <div class="cta">
+    <h3>Looking for a pilot school</h3>
+    <p>If you lead a school, coordinate student research coursework, or work in education data protection and want to see the full specification, I'd love to talk. I'm also open to roles in AI solution consulting (presales) and product management, where this is exactly the kind of work I want to do.</p>
+    <div class="cta-actions">
+      <a class="btn primary" href="https://www.linkedin.com/in/apoorva-joshi" target="_blank" rel="noopener">Connect on LinkedIn →</a>
+      <a class="btn secondary" href="feedback-without-fear.html">Read part one</a>
+      <a class="btn secondary" href="index.html#blogs">More posts</a>
+    </div>
+  </div>
+</article>
+
+
+<footer>
+  <span>© 2026 Apoorva Joshi · Singapore</span>
+</footer>
+
+<!-- Visitor analytics: GoatCounter -->
+<script data-goatcounter="https://apoorvaaj.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
