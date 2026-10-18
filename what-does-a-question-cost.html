@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What Does a Question Cost? | Apoorva Joshi</title>
-<meta name="description" content="Pricing an AI coursework review one model call at a time: six simulated Quaestio reviews, three models with three jobs, and what the receipts taught me about pricing an AI product.">
+<meta name="description" content="Pricing an AI coursework review one model call at a time: six simulated Quaestio reviews budgeted for full use, three models with three jobs, and what the receipts taught me about pricing an AI product.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="What Does a Question Cost? Pricing an AI Review, One Model Call at a Time">
-<meta property="og:description" content="Six simulated reviews, itemised call by call. Draft quality drives the cost, not length, and the frontier model is most of the bill, which is exactly where it should be.">
+<meta property="og:description" content="Six simulated reviews, itemised call by call. The frontier model isn't the biggest line on the bill: student follow-ups are, and routing tasks to smaller models halves the cost.">
 <meta property="og:url" content="https://apoorvaaj.github.io/what-does-a-question-cost.html">
 <meta property="og:site_name" content="Apoorva Joshi">
 <meta property="og:image" content="https://apoorvaaj.github.io/preview.png">
@@ -205,7 +205,7 @@
 </nav>
 
 <article>
-  <div class="kicker">Product Management · AI · Pricing <span class="dim">· Feedback Without Fear, part three · Oct 2026 · 7 min read</span></div>
+  <div class="kicker">Product Management · AI · Pricing <span class="dim">· Feedback Without Fear, part three · Oct 2026 · 8 min read</span></div>
   <h1>What Does a Question Cost? <em>Pricing an AI Review, One Model Call at a Time</em></h1>
   <div class="byline">
     <div class="avatar" aria-hidden="true">AJ</div>
@@ -218,37 +218,40 @@
 
   <figure class="wide">
     <div class="gif-frame">
-      <img src="quaestio-cost-per-review.gif" width="1000" height="744" loading="lazy" alt="Six review receipts print line by line. Maths poor first draft totals S$0.432, Physics average first draft S$0.305, Biology excellent first draft S$0.201, Maths excellent second draft S$0.210, Physics average second draft S$0.307, Biology excellent second draft S$0.202. In every receipt the Opus main review is by far the largest line.">
+      <img src="quaestio-cost-per-review.gif" width="1000" height="744" loading="lazy" alt="Six review receipts print line by line. Maths poor first draft totals S$0.836, Physics average first draft S$0.755, Biology excellent first draft S$0.703, Maths excellent second draft S$0.714, Physics average second draft S$0.758, Biology excellent second draft S$0.705. In every receipt the 40 Sonnet follow-ups are the largest line, followed by the Opus main review.">
     </div>
-    <figcaption>Six simulated reviews, each itemised by model call. Figures are model cost only, in Singapore dollars, at Anthropic's published API rates.</figcaption>
+    <figcaption>Six simulated reviews, each itemised by model call, budgeted for full use: ten tries at the readiness gate and two follow-ups on every question. Figures are model cost only, in Singapore dollars, at Anthropic's published API rates.</figcaption>
   </figure>
 
   <h2>Three models, three jobs</h2>
   <p>A review isn't one call to one AI model. It's a short chain, and each link uses the cheapest model that does that job well. Only the feedback itself goes to the frontier model. This was one of the decisions I made in the requirements; the receipts are the first time I've seen what it's worth.</p>
   <div class="jobs">
-    <div class="job"><div class="who"><i style="background:var(--haiku)"></i>Haiku 5.5</div><p>Checks the draft is a genuine, complete-enough piece of coursework before a review is used. Then checks every question Opus writes, to confirm it contains no rewrites or text a student could paste in.<small>Readiness gate · guardrail check</small></p></div>
+    <div class="job"><div class="who"><i style="background:var(--haiku)"></i>Haiku 5.5</div><p>Checks the draft is a genuine, complete-enough piece of coursework before a review is used. Students often try several times before a draft passes, so I've budgeted for ten tries. Then it checks every question Opus writes, to confirm it contains no rewrites or text a student could paste in.<small>Readiness gate · guardrail check</small></p></div>
     <div class="job"><div class="who"><i style="background:var(--opus)"></i>Opus 5.5</div><p>Reads the whole draft against the assessment criteria and writes the feedback, as questions only. This is the one job where the quality of the model shows up directly in the quality of the feedback.<small>Main review</small></p></div>
-    <div class="job"><div class="who"><i style="background:var(--sonnet)"></i>Sonnet 5.5</div><p>Answers the student's follow-ups: explaining a question in plain language, or helping them draft a question to take to their teacher.<small>Follow-ups, only when the student asks</small></p></div>
+    <div class="job"><div class="who"><i style="background:var(--sonnet)"></i>Sonnet 5.5</div><p>Answers the student's follow-ups: explaining a question in plain language, or helping them draft a question to take to their teacher.<small>Up to two follow-ups on each question</small></p></div>
   </div>
 
   <h2>What the receipts show</h2>
   <div class="stats">
-    <div class="stat"><b>S$0.28</b><span>average model cost per review across the six drafts</span></div>
-    <div class="stat"><b>2.1×</b><span>cost of the weakest draft over the strongest</span></div>
-    <div class="stat"><b>~81%</b><span>of every review's cost is the Opus main review</span></div>
-    <div class="stat"><b>31%</b><span>saved by routing three of the four steps to smaller models</span></div>
+    <div class="stat"><b>S$0.75</b><span>average model cost per review, at full use</span></div>
+    <div class="stat"><b>~67%</b><span>of every review's cost is student follow-ups</span></div>
+    <div class="stat"><b>1.2×</b><span>cost of the weakest draft over the strongest</span></div>
+    <div class="stat"><b>53%</b><span>saved by keeping the frontier model for the feedback only</span></div>
   </div>
 
-  <h3>Draft quality drives the cost, not draft length</h3>
-  <p>The poor maths draft has the fewest words of the six, yet it costs more than twice as much to review as the excellent biology draft. A weak draft takes the model longer to reason through, earns more questions, and prompts more follow-ups. The student's own text is a small slice of the bill. The model's thinking and writing are most of it.</p>
-  <p>That surprised me at first. My instinct, like most people's, was to price by the page. But the receipts say the work is in the reading and reasoning, not in the word count.</p>
+  <h3>Follow-ups, not the review, are the biggest line</h3>
+  <p>This one surprised me. I expected the frontier model to dominate the bill. It doesn't. A student can ask up to two follow-ups on each question, and a typical review raises at least 20 questions. Budgeting for full use means 40 Sonnet calls per review. Each one costs about a cent, but together they come to roughly S$0.50, more than the Opus review itself. For a strong draft, they cost about two and a half times as much.</p>
+  <p>So the price of a review isn't really set by the clever part. It's set by how much the student talks back. That's exactly what I want students to do, which is why the two-per-question cap matters: it keeps the conversation useful and the cost predictable.</p>
 
-  <h3>A second draft costs the same as a first, for the same quality</h3>
-  <p>Every review is independent by design. Quaestio never sends a previous draft or earlier feedback with a request, so nothing about a student's work is carried between sessions. The physics draft that stayed average costs the same both times, within about 1%. The maths draft gets cheaper only because the student improved it.</p>
-  <p>I could have saved a little by giving the model the earlier feedback as context. I chose not to. "Never remember" was one of my five principles, and it turns out to have a price tag, a small one, that I'm happy to pay.</p>
+  <h3>Draft quality still moves the cost, but less than you'd expect</h3>
+  <p>The poor maths draft costs about 20% more than the excellent biology draft, even though it has the fewest words. All of that difference sits in the Opus review: a weak draft takes longer to reason through and earns more questions. Because the follow-up budget is the same for everyone, it evens out the rest.</p>
+  <p>A second draft costs the same as a first draft of the same quality. Every review is independent by design: Quaestio never sends an earlier draft or earlier feedback with a request. "Never remember" was one of my five principles, and it turns out to have a small price tag that I'm happy to pay.</p>
 
-  <h3>The frontier model is most of the bill, and that's where it should be</h3>
-  <p>Opus accounts for roughly four-fifths of the cost of every review. Running the readiness gate, the guardrail check and the follow-ups on smaller models saves about 31% compared with sending everything to Opus. Try the toggle below to see the difference.</p>
+  <h3>Ten tries at the readiness gate cost less than a cent</h3>
+  <p>Students may submit a draft many times before it's ready for review. Ten Haiku checks come to under one Singapore cent per review. So the daily limit on gate attempts isn't there to save money. It's there to stop the gate being used as free feedback.</p>
+
+  <h3>Using three models halves the bill</h3>
+  <p>Sending the gate, the guardrail check and all 40 follow-ups to Opus would more than double the cost of every review. Keeping the frontier model for the feedback itself saves about 53%. Try the toggle below to see the difference.</p>
 
   <section class="explorer wide" aria-labelledby="ex-title">
     <div class="ex-head">
@@ -278,16 +281,17 @@
   </section>
 
   <h2>What this means for a school</h2>
-  <p>With the default allowance of two reviews per subject, the model cost for one student in one subject lands between roughly <strong id="pair-lo">S$0.40</strong> and <strong id="pair-hi">S$0.64</strong> in these scenarios. A student taking all four pilot subjects, with weak first drafts in every one, would stay under about <strong id="four-hi">S$2.60</strong> for the year.</p>
-  <p>That figure is small, and predictable enough to build into a per-student licence. The larger costs of running Quaestio sit elsewhere: secure hosting in Singapore, redaction, the subject-teacher time that goes into the knowledge base, and support for schools. Model cost is the part that scales with use, which is why it's worth knowing precisely.</p>
-  <p>It also answers a quieter worry. Because a weaker draft costs more to review, the students who need the most help are the ones who use the most of the model. The allowance is the same for everyone. The effort the model spends isn't, and it shouldn't be.</p>
-  <div class="pull"><p>Know what each unit of value costs you before you promise anyone a price.</p></div>
+  <p>With the default allowance of two reviews per subject, the model cost for one student in one subject lands between roughly <strong id="pair-lo">S$1.41</strong> and <strong id="pair-hi">S$1.55</strong> in these scenarios. A student taking all four pilot subjects, using every review and every follow-up, would cost about <strong id="four-hi">S$6.20</strong> for the year.</p>
+  <p>That's a ceiling, not an average. Most students won't ask two follow-ups on every question. If they ask half as many, each review costs about <strong id="half-save">S$0.25</strong> less. I'd rather price a licence on the ceiling and be pleasantly wrong than price on a guess and run short.</p>
+  <p>The figure is small, and predictable enough to build into a per-student licence. The larger costs of running Quaestio sit elsewhere: secure hosting in Singapore, redaction, the subject-teacher time that goes into the knowledge base, and support for schools. Model cost is the part that scales with use, which is why it's worth knowing precisely.</p>
+  <p>It also answers a quieter worry. A weaker draft gets a longer, more searching review, so the students who need the most help get the most of the model's effort. The allowance is the same for everyone. The effort the model spends isn't, and it shouldn't be.</p>
+  <div class="pull"><p>The cheapest call in the pipeline turned out to be the biggest line on the bill.</p></div>
 
   <h2>How the numbers were built</h2>
   <p>I'd rather say this plainly: these are simulated reviews, not measurements from live use. The token counts below are my working assumptions, and I'll replace them with real figures from the pilot. Prices are Anthropic's published API rates for October 2026.</p>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Draft</th><th>Words</th><th>Draft tokens</th><th>Opus thinking</th><th>Questions</th><th>Follow-ups</th><th id="th-total">Total (SGD)</th></tr></thead>
+      <thead><tr><th>Draft</th><th>Words</th><th>Draft tokens</th><th>Opus thinking</th><th>Questions</th><th>Gate tries</th><th>Follow-ups</th><th id="th-total">Total (SGD)</th></tr></thead>
       <tbody id="assume"></tbody>
     </table>
   </div>
@@ -296,22 +300,23 @@
     <li><strong>Draft size:</strong> about 1.7 tokens per word after redaction; maths drafts run denser because equations travel as LaTeX.</li>
     <li><strong>Shared material is cached:</strong> instructions, criterion checklists and knowledge-base entries (about 18,000 tokens for the main review) are billed at the cached rate. Student text is never cached.</li>
     <li><strong>Each question</strong> is about 90 tokens of structured output: the question, the criterion it relates to, and where it points in the draft.</li>
-    <li><strong>Each follow-up</strong> sends about 1,200 tokens plus 3,000 cached, and returns about 700.</li>
+    <li><strong>Readiness gate:</strong> 10 attempts per review, each sending the draft's prose (figures replaced by markers) and returning a short verdict.</li>
+    <li><strong>Follow-ups:</strong> at least 20 questions per review, each with up to two follow-ups, so 40 per review. Each sends about 1,200 tokens plus 3,000 cached, and returns about 700.</li>
     <li><strong>Not included:</strong> the occasional cache write when a cache expires, retries, and the premium for US-only data residency, which a Singapore launch doesn't need.</li>
   </ul>
 
   <h2>Four things I learned</h2>
   <ol>
-    <li><strong>Price the work, not the word count.</strong> The obvious unit, pages or words, was the wrong one. What drives cost is how hard the draft is to reason about. Find the real cost driver before you pick a pricing unit, or your margins will depend on luck.</li>
-    <li><strong>Model routing is a commercial decision too.</strong> I chose to route tasks to smaller models for speed and safety. The receipts showed it's also worth almost a third of the bill. Architecture choices and pricing choices are the same conversation.</li>
-    <li><strong>Principles have a price, so put a number on it.</strong> Never carrying a student's work between sessions costs a little more per review. Knowing exactly how much made it easy to defend, instead of a vague worry that privacy is expensive.</li>
+    <li><strong>Find the real cost driver before you pick a pricing unit.</strong> I assumed the frontier model would set the price. The receipts said the student's follow-ups do. If I'd priced on the wrong driver, the margins would have depended on luck.</li>
+    <li><strong>Caps are pricing levers, not just product rules.</strong> The two-follow-ups-per-question cap and the daily gate limit started as design decisions about good learning. They turned out to be what makes a review's cost predictable enough to put in a contract.</li>
+    <li><strong>Model routing is a commercial decision too.</strong> I chose smaller models for speed and safety. The receipts showed routing also halves the bill. Architecture choices and pricing choices are the same conversation.</li>
     <li><strong>Publish your assumptions with your numbers.</strong> A cost model without its assumptions is just a claim. Showing the token counts, the rates and what's left out invites a school's finance team to check my working, and that builds more trust than a single tidy figure.</li>
   </ol>
 
   <div class="thanks"><p>As with the specification, I built this simulation working with <strong>Claude</strong>. I set the scenarios and the assumptions and decided what the numbers meant; Claude helped turn them into a working model and the receipts above, and kept me honest about what a simulation can and can't claim.</p></div>
 
   <h2>What's next</h2>
-  <p>The next step is to replace every assumption in that table with a measurement. During the pilot I'll track real token counts per review, how many follow-ups students actually use, and whether weaker drafts really do cost more in practice. Then the licence price can rest on evidence, not a spreadsheet of guesses.</p>
+  <p>The next step is to replace every assumption in that table with a measurement. During the pilot I'll track real token counts per review, how many gate attempts and follow-ups students actually use, and whether weaker drafts really do cost more in practice. The follow-up rate matters most: it's the biggest line, and the one I've had to guess. Then the licence price can rest on evidence, not a spreadsheet of guesses.</p>
 
   <div class="cta">
     <h3>Looking for a pilot school</h3>
@@ -333,14 +338,14 @@
   var FX = 1.28;
   var P = { opus: [4, 20, 0.2], sonnet: [2, 10, 0.1], haiku: [0.1, 0.5, 0.01] };
   var D = [
-    { subject: "Maths",   draft: "First",  quality: "Poor",      words: 2400, tokens: 5600, questions: 28, thinking: 9000, followups: 8 },
-    { subject: "Physics", draft: "First",  quality: "Average",   words: 2600, tokens: 5200, questions: 18, thinking: 6500, followups: 5 },
-    { subject: "Biology", draft: "First",  quality: "Excellent", words: 2900, tokens: 5800, questions: 10, thinking: 4500, followups: 2 },
-    { subject: "Maths",   draft: "Second", quality: "Excellent", words: 3200, tokens: 7500, questions: 10, thinking: 4500, followups: 2 },
-    { subject: "Physics", draft: "Second", quality: "Average",   words: 2800, tokens: 5600, questions: 18, thinking: 6500, followups: 5 },
-    { subject: "Biology", draft: "Second", quality: "Excellent", words: 3000, tokens: 6000, questions: 10, thinking: 4500, followups: 2 }
+    { subject: "Maths",   draft: "First",  quality: "Poor",      words: 2400, tokens: 5600, questions: 28, thinking: 9000, followups: 40 },
+    { subject: "Physics", draft: "First",  quality: "Average",   words: 2600, tokens: 5200, questions: 22, thinking: 6500, followups: 40 },
+    { subject: "Biology", draft: "First",  quality: "Excellent", words: 2900, tokens: 5800, questions: 20, thinking: 4500, followups: 40 },
+    { subject: "Maths",   draft: "Second", quality: "Excellent", words: 3200, tokens: 7500, questions: 20, thinking: 4500, followups: 40 },
+    { subject: "Physics", draft: "Second", quality: "Average",   words: 2800, tokens: 5600, questions: 22, thinking: 6500, followups: 40 },
+    { subject: "Biology", draft: "Second", quality: "Excellent", words: 3000, tokens: 6000, questions: 20, thinking: 4500, followups: 40 }
   ];
-  var TOK_Q = 90, WRAP = 400;
+  var TOK_Q = 90, WRAP = 400, GATE = 10;
   var state = { cur: "SGD", route: "mixed" };
 
   function cost(m, i, o, c) { var p = P[m]; return (i * p[0] + o * p[1] + c * p[2]) / 1e6; }
@@ -348,7 +353,7 @@
     var vis = r.questions * TOK_Q, prose = Math.floor(r.tokens * 0.85);
     var small = route === "opus" ? "opus" : "haiku";
     var mid = route === "opus" ? "opus" : "sonnet";
-    var gate = cost(small, prose + WRAP, 150, 1500);
+    var gate = GATE * cost(small, prose + WRAP, 150, 1500);
     var check = cost(small, r.tokens + vis + WRAP, 200, 1200);
     var review = cost("opus", r.tokens + WRAP, r.thinking + vis, 18000);
     var fu = r.followups * cost(mid, 800 + WRAP, 700, 3000);
@@ -372,7 +377,7 @@
 
   function render() {
     var res = D.map(function (r) { return calc(r, state.route); });
-    var maxV = state.cur === "SGD" ? 0.64 : 0.5; // fixed scale so the All Opus toggle shows real growth
+    var maxV = state.cur === "SGD" ? 2 : 1.6; // fixed scale so the All Opus toggle shows real growth
     var toV = function (usd) { return state.cur === "SGD" ? usd * FX : usd; };
     var rows = bars.children;
     res.forEach(function (c, i) {
@@ -393,7 +398,7 @@
       var s = document.createElement("span");
       s.style.left = (t * 25) + "%";
       var v = t * maxV / 4;
-      s.textContent = t === 0 ? "0" : (state.cur === "SGD" ? "S$" + v.toFixed(2) : "$" + v.toFixed(3).replace(/0$/, ""));
+      s.textContent = t === 0 ? "0" : (state.cur === "SGD" ? "S$" : "$") + v.toFixed(2);
       if (t === 0) s.style.transform = "none";
       if (t === 4) s.style.transform = "translateX(-100%)";
       ticks.appendChild(s);
@@ -402,19 +407,19 @@
     var mixed = D.map(function (r) { return calc(r, "mixed").total; });
     var opus = D.map(function (r) { return calc(r, "opus").total; });
     var cur = state.route === "opus" ? opus : mixed;
-    var opusShare = sum(res.map(function (c) { return c.opus; })) / sum(cur);
+    var fuShare = sum(res.map(function (c) { return c.sonnet; })) / sum(cur);
     document.getElementById("foot").innerHTML =
       "<div><b>" + money(sum(cur) / cur.length, 3) + "</b><span>average per review</span></div>" +
       "<div><b>" + money(Math.min.apply(null, cur), 3) + " – " + money(Math.max.apply(null, cur), 3) + "</b><span>range across the six drafts</span></div>" +
       (state.route === "opus"
         ? "<div><b>+" + Math.round((sum(opus) / sum(mixed) - 1) * 100) + "%</b><span>more than the three-model pipeline</span></div>"
-        : "<div><b>" + Math.round(opusShare * 100) + "%</b><span>of the cost is the Opus review</span></div>");
+        : "<div><b>" + Math.round(fuShare * 100) + "%</b><span>of the cost is student follow-ups</span></div>");
 
     document.getElementById("th-total").textContent = "Total (" + state.cur + ")";
     document.getElementById("assume").innerHTML = D.map(function (r, i) {
       return "<tr><td>" + r.subject + ", " + r.draft.toLowerCase() + " · " + r.quality.toLowerCase() + "</td><td>" + r.words.toLocaleString("en-SG") +
         "</td><td>" + r.tokens.toLocaleString("en-SG") + "</td><td>" + r.thinking.toLocaleString("en-SG") + "</td><td>" + r.questions +
-        "</td><td>" + r.followups + "</td><td>" + money(res[i].total, 4) + "</td></tr>";
+        "</td><td>" + GATE + "</td><td>" + r.followups + "</td><td>" + money(res[i].total, 4) + "</td></tr>";
     }).join("");
 
     // Per-subject figures in the prose: always the three-model pipeline, in SGD
@@ -423,7 +428,9 @@
     var pairs = Object.keys(bySub).map(function (k) { return bySub[k]; });
     document.getElementById("pair-lo").textContent = "S$" + Math.min.apply(null, pairs).toFixed(2);
     document.getElementById("pair-hi").textContent = "S$" + Math.max.apply(null, pairs).toFixed(2);
-    document.getElementById("four-hi").textContent = "S$" + (Math.ceil(4 * Math.max.apply(null, pairs) * 10) / 10).toFixed(2);
+    document.getElementById("four-hi").textContent = "S$" + (4 * Math.max.apply(null, pairs)).toFixed(2);
+    var halfSave = D[0].followups / 2 * cost("sonnet", 800 + WRAP, 700, 3000) * FX;
+    document.getElementById("half-save").textContent = "S$" + halfSave.toFixed(2);
   }
 
   function press(on, off) { on.setAttribute("aria-pressed", "true"); off.setAttribute("aria-pressed", "false"); }
