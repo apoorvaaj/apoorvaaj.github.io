@@ -695,6 +695,7 @@
   .story-label::before { content: ''; width: 18px; height: 1px; background: var(--accent); }
   .story-block p { font-size: 0.86rem; color: var(--text-dim); line-height: 1.75; }
   .story-block .highlights { margin: 0; }
+  .story-block p a { color: var(--accent); }
   .highlights strong { color: var(--text); font-weight: bold; }
   .project-card.recent {
     grid-column: 1 / -1;
@@ -1144,7 +1145,7 @@
   <div class="home-glow"></div>
   <div class="home-glow2"></div>
   <div class="home-content">
-    <button type="button" class="now-pill" onclick="showPage('projects')"><span class="badge">NEW</span>Latest work: RAG, multi-agent &amp; agentic AI builds — MealPartner, BeatKeeper, Attic →</button>
+    <button type="button" class="now-pill" onclick="showPage('projects')"><span class="badge">NEW</span>Latest: Quaestio, now in development with a channel partner · plus MealPartner, BeatKeeper, Attic →</button>
     <div class="home-eyebrow">AI Solution Consultant (Presales) · Product Manager</div>
     <h1 class="home-title">
       AI that<br>
@@ -1253,7 +1254,7 @@
             <div class="timeline-date">2019 – 2026</div>
             <div class="timeline-title">Career Break · Community Leadership &amp; AI Builds</div>
             <div class="timeline-org">UWCSEA Parent Association · Independent projects</div>
-            <div class="timeline-desc">Led the Parent Association EdTech Group's research on AI and screen time with the college's Educational Technology Working Group, distilling 37 recommendations into eight priorities for school leadership. Built a check-in page for 1,000+ families and an algorithm that seated around 900 dinner guests. Designed and built three AI products: Attic, a guardrailed Gmail agent; BeatKeeper, a multi-agent content system with golden-dataset evals; and MealPartner, a RAG assistant for university students. <a href="#projects" onclick="showPage('projects');return false;">See the projects →</a> · <a href="seven-years.html">Read why →</a></div>
+            <div class="timeline-desc">Led the Parent Association EdTech Group's research on AI and screen time with the college's Educational Technology Working Group, distilling 37 recommendations into eight priorities for school leadership. Built a check-in page for 1,000+ families and an algorithm that seated around 900 dinner guests. Designed and built three AI products: Attic, a guardrailed Gmail agent; BeatKeeper, a multi-agent content system with golden-dataset evals; and MealPartner, a RAG assistant for university students. Specified Quaestio, a question-only AI feedback tool for student research coursework, now in development with a channel partner. <a href="#projects" onclick="showPage('projects');return false;">See the projects →</a> · <a href="seven-years.html">Read why →</a></div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">Oct 2017 – Dec 2018</div>
@@ -1303,7 +1304,7 @@
     <div class="projects-header">
       <div class="section-label">Selected Work</div>
       <h2 class="page-title">Research &amp;<br><span class="accent">Projects</span></h2>
-      <p class="page-subtitle">Recent agentic AI and RAG builds, alongside academic, professional and community work spanning deep learning, NLP, IoT and cloud analytics.</p>
+      <p class="page-subtitle">Recent agentic AI, RAG and responsible-AI product work, alongside academic, professional and community work spanning deep learning, NLP, IoT and cloud analytics.</p>
     </div>
 
     <!-- ===== RECENT WORK · 2026 ===== -->
@@ -1316,11 +1317,58 @@
     -->
     <div class="projects-grid recent-grid">
 
+      <!-- Quaestio -->
+      <div class="project-card recent" data-project="Quaestio" data-demo="soon" onmousemove="trackMouse(this, event)">
+        <div class="recent-inner">
+          <div>
+            <div class="project-card-num">01 <span class="badge">OCT 2026</span><span class="badge">IN DEVELOPMENT · CHANNEL PARTNER</span></div>
+            <div class="project-card-cat">Responsible AI · EdTech · Product Management</div>
+            <div class="project-card-title">Quaestio — Question-Only AI Feedback for Student Research</div>
+
+            <div class="story-block">
+              <div class="story-label">The problem</div>
+              <p>Students writing long independent research coursework need a critical reader, and the help they get depends on luck: which school, which supervisor, how much time that supervisor has. AI could level the field, but students are afraid to use it. They worry their draft will be kept or used to train a model, and that AI-written words will creep in and look like cheating.</p>
+            </div>
+
+            <div class="story-block">
+              <div class="story-label">How Quaestio solves it</div>
+              <p>Quaestio is a web app that schools authorise for their students. A student uploads a draft, checks a preview with their personal details already removed, and gets back questions in the margin, each tied to a passage of their own text. They can accept, reject or ask to understand a question, but there is no chat box and the system cannot write anything they could paste in. When the session ends, the draft is gone. Its tagline: <em>Questions, never answers.</em> I wrote the full product specification and am now developing Quaestio with a channel partner.</p>
+            </div>
+
+            <div class="story-block">
+              <div class="story-label">Technical details</div>
+              <ul class="highlights">
+                <li><strong>Specification first:</strong> five product principles, more than 230 numbered, testable requirements, 28 acceptance criteria and a dated decision log, completed before any code.</li>
+                <li><strong>Guardrails enforced by structure:</strong> nine master guardrails no console can switch off. No free-text channel to the model, a fixed output schema, and every question checked by a rule validator and a second model before it is shown. Any failure withholds output.</li>
+                <li><strong>Privacy by architecture:</strong> drafts are processed in memory in isolated workers and never stored or used for training. Identity is redacted before any model call, the student confirms what is sent, and schools see who, when and where, never what.</li>
+                <li><strong>Model routing and unit economics:</strong> a frontier model for the main review and smaller models for readiness and safety checks, with per-student licensing designed around a costed review. Singapore hosting at launch.</li>
+              </ul>
+            </div>
+
+            <div class="story-block">
+              <div class="story-label">Read more</div>
+              <p><a href="feedback-without-fear.html">Feedback Without Fear</a> · <a href="building-quaestio.html">Building Quaestio</a> · <a href="what-does-a-question-cost.html">What Does a Question Cost?</a> · <a href="who-taught-it-what-to-ask.html">Who Taught It What to Ask?</a></p>
+            </div>
+
+            <div class="project-tags">
+              <span class="ptag">Claude API</span><span class="ptag">Responsible AI</span><span class="ptag">Guardrails</span><span class="ptag">PII Redaction</span><span class="ptag">Model Routing</span><span class="ptag">Multi-Tenant SaaS</span><span class="ptag">Privacy by Design</span><span class="ptag">Requirements Engineering</span><span class="ptag">Go-to-Market</span>
+            </div>
+          </div>
+          <div class="flow" role="img" aria-label="Quaestio review flow">
+            <div class="flow-step">Upload draft</div><div class="flow-arrow">↓</div>
+            <div class="flow-step key">Redact &amp; confirm</div><div class="flow-arrow">↓</div>
+            <div class="flow-step">Criterion review</div><div class="flow-arrow">↓</div>
+            <div class="flow-step key">Two output checks</div><div class="flow-arrow">↓</div>
+            <div class="flow-step">Questions only</div>
+          </div>
+        </div>
+      </div>
+
       <!-- MealPartner -->
       <div class="project-card recent" data-project="MealPartner" data-demo="soon" onmousemove="trackMouse(this, event)">
         <div class="recent-inner">
           <div>
-            <div class="project-card-num">01 <span class="badge">JUN 2026</span><span class="badge">SYSTEM DESIGN</span></div>
+            <div class="project-card-num">02 <span class="badge">JUN 2026</span><span class="badge">SYSTEM DESIGN</span></div>
             <div class="project-card-cat">RAG · Conversational AI · Local-First LLM</div>
             <div class="project-card-title">MealPartner — WhatsApp RAG Meal Assistant</div>
 
@@ -1362,7 +1410,7 @@
       <div class="project-card recent" data-project="BeatKeeper" onmousemove="trackMouse(this, event)">
         <div class="recent-inner">
           <div>
-            <div class="project-card-num">02 <span class="badge">JAN 2026</span><span class="badge">WORKING PROTOTYPE</span></div>
+            <div class="project-card-num">03 <span class="badge">JAN 2026</span><span class="badge">WORKING PROTOTYPE</span></div>
             <div class="project-card-cat">Multi-Agent AI · LLM Orchestration · Responsible AI</div>
             <div class="project-card-title">BeatKeeper — Multi-Agent Content Campaign System</div>
 
@@ -1404,7 +1452,7 @@
       <div class="project-card recent" data-project="Attic" onmousemove="trackMouse(this, event)">
         <div class="recent-inner">
           <div>
-            <div class="project-card-num">03 <span class="badge">DEC 2025</span><span class="badge">WORKING PROTOTYPE</span></div>
+            <div class="project-card-num">04 <span class="badge">DEC 2025</span><span class="badge">WORKING PROTOTYPE</span></div>
             <div class="project-card-cat">Agentic AI · LLM Safety · Gmail API</div>
             <div class="project-card-title">Attic — Guardrailed Gmail Cleanup Agent</div>
 
@@ -1548,12 +1596,20 @@
     <div class="projects-header">
       <div class="section-label">Writing · Blog &amp; Medium</div>
       <h2 class="page-title">Thoughts &amp;<br><span class="accent">Blogs</span></h2>
-      <p class="page-subtitle">Posts on my own blog, from designing an AI feedback coach that students can trust, the product decisions behind it and what each review costs to run, to bringing software discipline to vibe coding and what two of my own builds taught me about it, and applied problem-solving in school volunteering to my career break, and articles on Medium on AI and technology policy, data storytelling, practical analysis and machine-learning practice, alongside earlier pieces on NLP research and embedding analytics in large organisations.</p>
+      <p class="page-subtitle">Posts on my own blog, from designing an AI feedback coach that students can trust, the product decisions behind it, what each review costs to run and why its teacher-approved knowledge base matters more than the model, to bringing software discipline to vibe coding and what two of my own builds taught me about it, and applied problem-solving in school volunteering to my career break, and articles on Medium on AI and technology policy, data storytelling, practical analysis and machine-learning practice, alongside earlier pieces on NLP research and embedding analytics in large organisations.</p>
     </div>
 
     <!-- Personal blog — LATEST post (hosted on this site) -->
+    <a class="personal-post" href="who-taught-it-what-to-ask.html">
+      <div class="personal-kicker"><span class="latest-badge">Latest</span>From my blog · Product management · AI · Education · Oct 2026 · 7 min read</div>
+      <div class="personal-title">Who Taught It What to Ask? <em>Why Quaestio's Real Product Is Its Knowledge Base</em></div>
+      <p class="personal-excerpt">Part four of Feedback Without Fear. Every competitor can rent the same frontier model, so the model can't be the product. What makes a Quaestio review different is a teacher-approved knowledge base: a library of checks that tells the model what to look for, which questions to ask and what it must never say. Why that makes question-only feedback reliable, consistent and traceable, how it improves without ever reading student work, what it takes to build, and three lessons on where the real advantage lies in an AI product.</p>
+      <span class="personal-cta">Read the article →</span>
+    </a>
+
+    <!-- Personal blog (hosted on this site) -->
     <a class="personal-post" href="what-does-a-question-cost.html">
-      <div class="personal-kicker"><span class="latest-badge">Latest</span>From my blog · Product management · AI · Pricing · Oct 2026 · 8 min read</div>
+      <div class="personal-kicker">From my blog · Product management · AI · Pricing · Oct 2026 · 8 min read</div>
       <div class="personal-title">What Does a Question Cost? <em>Pricing an AI Review, One Model Call at a Time</em></div>
       <p class="personal-excerpt">Part three of Feedback Without Fear. Before promising a price to schools, I simulated six Quaestio reviews at full use and itemised every model call. The surprise: the frontier model isn't the biggest line on the bill, the student's follow-ups are. Draft quality moves the cost less than expected, ten tries at the readiness gate cost under a cent, and routing tasks to smaller models halves the bill. With an interactive cost explorer, every assumption published, and four lessons on pricing an AI product.</p>
       <span class="personal-cta">Read the article →</span>
