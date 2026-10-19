@@ -1031,6 +1031,30 @@
   /* "Latest" badge: the newest post */
   .latest-badge { display: inline-block; color: var(--accent); border: 1px solid var(--accent); padding: 0.1rem 0.5rem; margin-right: 0.6rem; letter-spacing: 0.1em; }
 
+  /* Blog series: linked posts grouped into one block.
+     Header (name, part count, pitch) → Part 1 as the lead card → later parts as compact numbered rows, in reading order. */
+  .series-block { background: var(--surface); border: 1px solid rgba(10,113,120,0.3); border-top: 3px solid var(--accent); margin-bottom: 2rem; }
+  .series-head { padding: 1.6rem 2.4rem 1.3rem; border-bottom: 1px solid var(--border); background: linear-gradient(135deg, var(--surface) 0%, rgba(10,113,120,0.07) 100%); }
+  .series-kicker { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: bold; margin-bottom: 0.6rem; }
+  .series-name { font-family: var(--serif); font-weight: 500; font-size: 1.6rem; line-height: 1.2; color: var(--text); margin-bottom: 0.45rem; }
+  .series-pitch { font-size: 0.86rem; line-height: 1.7; color: var(--text-dim); max-width: 720px; }
+  .series-block .personal-post { background: none; border: none; border-bottom: 1px solid var(--border); margin: 0; }
+  .series-block .personal-post:hover { transform: none; background: rgba(10,113,120,0.03); }
+  .part-badge { display: inline-block; background: var(--accent); color: #fff; padding: 0.15rem 0.55rem; margin-right: 0.6rem; letter-spacing: 0.1em; }
+  .series-part { display: grid; grid-template-columns: 3rem 1fr auto; gap: 1.2rem; align-items: start; padding: 1.25rem 2.4rem; border-bottom: 1px solid var(--border);
+                 text-decoration: none; color: inherit; transition: background 0.2s; }
+  .series-part:last-child { border-bottom: none; }
+  .series-part:hover { background: rgba(10,113,120,0.04); }
+  .part-num { font-family: var(--serif); font-size: 1.5rem; line-height: 1.1; color: var(--accent); }
+  .part-body { display: block; }
+  .part-title { display: block; font-family: var(--serif); font-size: 1.12rem; line-height: 1.35; color: var(--text); margin-bottom: 0.3rem; transition: color 0.2s; }
+  .part-title em { color: var(--accent); }
+  .series-part:hover .part-title { color: var(--accent); }
+  .part-desc { display: block; font-size: 0.82rem; line-height: 1.65; color: var(--text-dim); max-width: 680px; }
+  .part-time { font-size: 0.65rem; color: var(--text-dimmer); white-space: nowrap; padding-top: 0.4rem; }
+  .part-new { display: inline-block; font-family: var(--sans); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+              border: 1px solid var(--accent); padding: 0.05rem 0.4rem; margin-left: 0.5rem; vertical-align: middle; }
+
   /* ==================== MOBILE ==================== */
   @media (max-width: 768px) {
     .page { padding-top: 64px; }
@@ -1087,6 +1111,11 @@
     .personal-title { font-size: 1.5rem; }
     .personal-cta { display: block; text-align: center; }
     .blog-item { grid-template-columns: 1fr; gap: 0.3rem; }
+    .series-head { padding: 1.3rem 1.2rem 1.1rem; }
+    .series-name { font-size: 1.35rem; }
+    .series-part { grid-template-columns: 2.2rem 1fr; gap: 0.8rem; padding: 1.1rem 1.2rem; }
+    .part-num { font-size: 1.25rem; }
+    .part-time { display: none; }
 
     /* About */
     .about-grid { gap: 2.5rem; margin-bottom: 3rem; }
@@ -1605,53 +1634,76 @@
       <p class="page-subtitle">Posts on my own blog, from designing an AI feedback coach that students can trust, the product decisions behind it, what each review costs to run and why its teacher-approved knowledge base matters more than the model, to bringing software discipline to vibe coding and what two of my own builds taught me about it, and applied problem-solving in school volunteering to my career break, and articles on Medium on AI and technology policy, data storytelling, practical analysis and machine-learning practice, alongside earlier pieces on NLP research and embedding analytics in large organisations.</p>
     </div>
 
-    <!-- Personal blog — LATEST post (hosted on this site) -->
-    <a class="personal-post" href="who-taught-it-what-to-ask.html">
-      <div class="personal-kicker"><span class="latest-badge">Latest</span>From my blog · Product management · AI · Education · Oct 2026 · 7 min read</div>
-      <div class="personal-title">Who Taught It What to Ask? <em>Why Quaestio's Real Product Is Its Knowledge Base</em></div>
-      <p class="personal-excerpt">Part four of Feedback Without Fear. Every competitor can rent the same frontier model, so the model can't be the product. What makes a Quaestio review different is a teacher-approved knowledge base: a library of checks that tells the model what to look for, which questions to ask and what it must never say. Why that makes question-only feedback reliable, consistent and traceable, how it improves without ever reading student work, what it takes to build, and three lessons on where the real advantage lies in an AI product.</p>
-      <span class="personal-cta">Read the article →</span>
-    </a>
+    <!--
+      BLOG SERIES: linked posts are grouped into one block each, newest series first.
+      HOW TO ADD A NEW PART TO A SERIES
+      1. Add a .series-part row at the end of its block, with the next number and its read time.
+      2. Update the part count in the series header and move the "New · Part N" badge and the "New" tag to the new part.
+      3. Add the post to series.js so its article page shows the series navigator and previous/next links.
+      HOW TO START A NEW SERIES: copy a whole .series-block, then do step 3.
+    -->
 
-    <!-- Personal blog (hosted on this site) -->
-    <a class="personal-post" href="what-does-a-question-cost.html">
-      <div class="personal-kicker">From my blog · Product management · AI · Pricing · Oct 2026 · 8 min read</div>
-      <div class="personal-title">What Does a Question Cost? <em>Pricing an AI Review, One Model Call at a Time</em></div>
-      <p class="personal-excerpt">Part three of Feedback Without Fear. Before promising a price to schools, I simulated six Quaestio reviews at full use and itemised every model call. The surprise: the frontier model isn't the biggest line on the bill, the student's follow-ups are. Draft quality moves the cost less than expected, ten tries at the readiness gate cost under a cent, and routing tasks to smaller models halves the bill. With an interactive cost explorer, every assumption published, and four lessons on pricing an AI product.</p>
-      <span class="personal-cta">Read the article →</span>
-    </a>
+    <!-- Series: Feedback Without Fear (hosted on this site) -->
+    <section class="series-block" aria-labelledby="series-fwf">
+      <div class="series-head">
+        <div class="series-kicker"><span class="latest-badge">New · Part 4</span>Series · 4 parts · Product management · AI · Education</div>
+        <h3 class="series-name" id="series-fwf">Feedback Without Fear</h3>
+        <p class="series-pitch">Designing, specifying, pricing and teaching an AI feedback coach that students can trust: how Quaestio went from one student's closed laptop to a product schools can approve.</p>
+      </div>
+      <a class="personal-post" href="feedback-without-fear.html">
+        <div class="personal-kicker"><span class="part-badge">Part 1 · Start here</span>AI · Education · Product design · Oct 2026 · 6 min read</div>
+        <div class="personal-title">Feedback Without Fear: <em>An AI Coach Students Can Trust</em></div>
+        <p class="personal-excerpt">The students who would gain most from AI feedback on their independent research coursework are often the most afraid to use it: they worry their work will be kept, or that AI words will creep in and look like cheating. Why today's options fall short, and how I'm designing a coach rather than a co-author: it only asks questions, never keeps the draft, reads the whole piece and is approved by the school, with rules the system enforces rather than promises the model is asked to keep.</p>
+        <span class="personal-cta">Start the series →</span>
+      </a>
+      <a class="series-part" href="building-quaestio.html">
+        <span class="part-num">02</span>
+        <span class="part-body">
+          <span class="part-title">Building Quaestio: <em>How I Specified an AI Product Schools Can Trust</em></span>
+          <span class="part-desc">From five principles to more than 230 testable requirements: the technical and business decisions behind a question-only feedback tool, and seven lessons in AI product management.</span>
+        </span>
+        <span class="part-time">9 min read</span>
+      </a>
+      <a class="series-part" href="what-does-a-question-cost.html">
+        <span class="part-num">03</span>
+        <span class="part-body">
+          <span class="part-title">What Does a Question Cost? <em>Pricing an AI Review, One Model Call at a Time</em></span>
+          <span class="part-desc">Six simulated reviews priced call by call, with an interactive cost explorer: why student follow-ups, not the frontier model, set the bill, and how model routing halves it.</span>
+        </span>
+        <span class="part-time">8 min read</span>
+      </a>
+      <a class="series-part" href="who-taught-it-what-to-ask.html">
+        <span class="part-num">04</span>
+        <span class="part-body">
+          <span class="part-title">Who Taught It What to Ask? <em>Why Quaestio's Real Product Is Its Knowledge Base</em><span class="part-new">New</span></span>
+          <span class="part-desc">Every competitor can rent the same model. Why a teacher-approved library of checks makes question-only feedback reliable, traceable and hard to copy, and improves without reading student work.</span>
+        </span>
+        <span class="part-time">7 min read</span>
+      </a>
+    </section>
 
-    <!-- Personal blog (hosted on this site) -->
-    <a class="personal-post" href="building-quaestio.html">
-      <div class="personal-kicker">From my blog · Product management · AI · Education · Oct 2026 · 9 min read</div>
-      <div class="personal-title">Building Quaestio: <em>How I Specified an AI Product Schools Can Trust</em></div>
-      <p class="personal-excerpt">Part two of Feedback Without Fear. How I turned a student's fear of AI into Quaestio, a question-only feedback tool for student research coursework: working outwards from five principles to more than 230 testable requirements, the technical and business decisions that shaped it, from buttons instead of a chat box to per-student licences that protect every paid review, how I worked with Claude, and seven lessons in AI product management.</p>
-      <span class="personal-cta">Read the article →</span>
-    </a>
-
-    <!-- Personal blog (hosted on this site) -->
-    <a class="personal-post" href="feedback-without-fear.html">
-      <div class="personal-kicker">From my blog · AI · Education · Product design · Oct 2026 · 6 min read</div>
-      <div class="personal-title">Feedback Without Fear: <em>An AI Coach Students Can Trust</em></div>
-      <p class="personal-excerpt">The students who would gain most from AI feedback on their independent research coursework are often the most afraid to use it: they worry their work will be kept, or that AI words will creep in and look like cheating. Why today's options fall short, and how I'm designing a coach rather than a co-author: it only asks questions, never keeps the draft, reads the whole piece and is approved by the school, with rules the system enforces rather than promises the model is asked to keep.</p>
-      <span class="personal-cta">Read the article →</span>
-    </a>
-
-    <!-- Personal blog (hosted on this site) -->
-    <a class="personal-post" href="spontaneous-vs-deliberate.html">
-      <div class="personal-kicker">From my blog · AI · Software engineering · Oct 2026 · 8 min read</div>
-      <div class="personal-title">Spontaneous vs Deliberate: <em>Two Ways I Vibe Coded</em></div>
-      <p class="personal-excerpt">Same builder, same AI coding tools, two different processes. BeatKeeper, a multi-agent content system, was built by following the idea wherever it led; MealPartner, a RAG assistant on WhatsApp, by locking the requirements first and building test by test. A stage-by-stage technical comparison of requirements, architecture, LLM boundaries, testing and failure handling, the honest pros and cons of each, and how I would combine them next time.</p>
-      <span class="personal-cta">Read the article →</span>
-    </a>
-
-    <!-- Personal blog (hosted on this site) -->
-    <a class="personal-post" href="vibe-coding.html">
-      <div class="personal-kicker">From my blog · AI · Software engineering · Oct 2026 · 10 min read</div>
-      <div class="personal-title">Agile, Waterfall and the Vibe: <em>Bringing SDLC Discipline to Vibe Coding</em></div>
-      <p class="personal-excerpt">Vibe coding doesn't make the software development life cycle obsolete; it compresses it. What vibe coding is, why it spread so fast, and where it collides with waterfall and agile, from requirements that live only in a chat log to diffs nobody reads. The fix is a hybrid: waterfall discipline in the spec and plan, agile cadence in small test-first slices, and vibes kept inside the build loop. With a risk-tiered process and best practices drawn from my own builds, MealPartner, BeatKeeper and Attic.</p>
-      <span class="personal-cta">Read the article →</span>
-    </a>
+    <!-- Series: Vibe Coding, Deliberately (hosted on this site) -->
+    <section class="series-block" aria-labelledby="series-vibe">
+      <div class="series-head">
+        <div class="series-kicker">Series · 2 parts · AI · Software engineering</div>
+        <h3 class="series-name" id="series-vibe">Vibe Coding, Deliberately</h3>
+        <p class="series-pitch">Bringing software discipline to building with AI coding agents: the principles first, then the evidence from two of my own builds.</p>
+      </div>
+      <a class="personal-post" href="vibe-coding.html">
+        <div class="personal-kicker"><span class="part-badge">Part 1 · Start here</span>AI · Software engineering · Oct 2026 · 10 min read</div>
+        <div class="personal-title">Agile, Waterfall and the Vibe: <em>Bringing SDLC Discipline to Vibe Coding</em></div>
+        <p class="personal-excerpt">Vibe coding doesn't make the software development life cycle obsolete; it compresses it. What vibe coding is, why it spread so fast, and where it collides with waterfall and agile, from requirements that live only in a chat log to diffs nobody reads. The fix is a hybrid: waterfall discipline in the spec and plan, agile cadence in small test-first slices, and vibes kept inside the build loop. With a risk-tiered process and best practices drawn from my own builds, MealPartner, BeatKeeper and Attic.</p>
+        <span class="personal-cta">Start the series →</span>
+      </a>
+      <a class="series-part" href="spontaneous-vs-deliberate.html">
+        <span class="part-num">02</span>
+        <span class="part-body">
+          <span class="part-title">Spontaneous vs Deliberate: <em>Two Ways I Vibe Coded</em></span>
+          <span class="part-desc">BeatKeeper built by following the idea, MealPartner built requirements-first and test by test: a stage-by-stage technical comparison, the honest pros and cons of each, and how I would combine them next time.</span>
+        </span>
+        <span class="part-time">8 min read</span>
+      </a>
+    </section>
 
     <!-- Article 1: Intentional Tech — Featured (latest) -->
     <div class="blog-featured" onclick="window.open('https://medium.com/@apoorva.aj/not-more-tech-not-less-tech-intentional-tech-6fa0f1c4f865','_blank')" >
