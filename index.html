@@ -1169,6 +1169,15 @@
     .project-card { box-shadow: none; }
     .highlights li, .timeline-item, .domain-map li { break-inside: avoid; }
   }
+
+  /* Phones: let the menu wrap onto a second line */
+  @media (max-width: 640px) {
+    nav { align-items: flex-start; }
+    .nav-links { flex-wrap: wrap; justify-content: flex-end; row-gap: 0.4rem; }
+    .nav-links a { white-space: nowrap; }
+    .page { padding-top: 96px; }
+    #home { min-height: calc(100vh - 96px); }
+  }
 </style>
 </head>
 <body>
@@ -1183,6 +1192,7 @@
     <li><a href="ba-to-ai-consultant.html" id="nav-path">My Path</a></li>
     <li><a href="#" onclick="showPage('projects');return false;" id="nav-projects">Projects</a></li>
     <li><a href="#" onclick="showPage('blogs');return false;" id="nav-blogs">Blogs</a></li>
+    <li><a href="why-this-course.html" id="nav-course">Why This Course</a></li>
     <li><a href="#" onclick="showPage('about');return false;" id="nav-about">About</a></li>
   </ul>
 </nav>

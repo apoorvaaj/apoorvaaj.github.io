@@ -110,6 +110,12 @@
     nav, .cta-actions { display: none; }
     body { background: #fff; }
   }
+
+  /* Phones: let the menu wrap onto a second line */
+  @media (max-width: 480px) {
+    nav { align-items: flex-start; }
+    .nav-links { flex-wrap: wrap; justify-content: flex-end; row-gap: 0.4rem; }
+  }
 </style>
 </head>
 <body>
@@ -122,6 +128,7 @@
     <li><a href="ba-to-ai-consultant.html">My Path</a></li>
     <li><a href="index.html#projects">Projects</a></li>
     <li><a href="index.html#blogs" class="active">Blogs</a></li>
+    <li><a href="why-this-course.html">Why This Course</a></li>
     <li><a href="index.html#about">About</a></li>
   </ul>
 </nav>
