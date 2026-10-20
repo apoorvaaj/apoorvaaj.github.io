@@ -1184,6 +1184,31 @@
   @media (max-width: 1100px) { .nav-full { display: none; } .nav-short { display: inline; } }
   @media (min-width: 769px) and (max-width: 1100px) { .nav-links { gap: 1.4rem; } }
   @media (min-width: 769px) and (max-width: 880px) { .nav-links { gap: 0.9rem; } }
+  /* Home hook for the free AI PM programme (links to the course pitch page) */
+  .course-hook { display: grid; grid-template-columns: 1fr auto; gap: 0.4rem 2rem; align-items: center; max-width: 760px; margin-top: 2.2rem;
+                 text-decoration: none; color: inherit; background: linear-gradient(135deg, var(--surface) 0%, rgba(10,113,120,0.08) 100%);
+                 border: 1px solid rgba(10,113,120,0.35); border-left: 4px solid var(--accent); padding: 1.3rem 1.6rem;
+                 opacity: 0; animation: slideUp 0.7s 0.95s ease forwards; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+  .course-hook:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,34,64,0.08); }
+  .course-hook-kicker { grid-column: 1 / -1; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: bold; }
+  .course-hook-kicker .badge { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+  .course-hook-title { grid-column: 1; font-family: var(--serif); font-weight: 500; font-size: 1.45rem; line-height: 1.25; color: var(--text); }
+  .course-hook-title em { color: var(--accent); }
+  .course-hook-text { grid-column: 1; font-size: 0.8rem; line-height: 1.65; color: var(--text-dim); }
+  .course-hook-cta { grid-column: 2; grid-row: 2 / span 2; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: var(--accent); padding: 0.8rem 1.3rem; white-space: nowrap; transition: background 0.2s; }
+  .course-hook:hover .course-hook-cta { background: var(--text); }
+  @media (max-width: 768px) {
+    .course-hook { grid-template-columns: 1fr; padding: 1.1rem 1.1rem 1.2rem; margin-top: 1.8rem; }
+    .course-hook:hover { transform: none; }
+    .course-hook-title { font-size: 1.2rem; }
+    .course-hook-cta { grid-column: 1; grid-row: auto; text-align: center; margin-top: 0.6rem; }
+  }
+  /* Wide screens: sit the hook in the empty space beside the headline, so it is seen without scrolling */
+  @media (min-width: 1200px) {
+    .course-hook { position: absolute; top: 9.5rem; right: 3rem; width: 340px; margin-top: 0; grid-template-columns: 1fr; padding: 1.5rem 1.5rem 1.6rem; }
+    .course-hook-cta { grid-column: 1; grid-row: auto; text-align: center; margin-top: 0.7rem; }
+  }
+  @media print { .course-hook { display: none !important; } }
 </style>
 </head>
 <body>
@@ -1233,6 +1258,12 @@
       <button type="button" class="btn-secondary" onclick="showPage('profile')">My Profile →</button>
       <a class="btn-secondary btn-link" href="Apoorva_Joshi_Resume.pdf" target="_blank" rel="noopener" onclick="trackResume()">Resume (PDF) ↓</a>
     </div>
+    <a class="course-hook" href="learn-ai-product-management.html" onclick="gcEvent('home-course-hook', 'Home course hook clicked')">
+      <span class="course-hook-kicker"><span class="badge">FREE</span>New · A 14-week programme I designed</span>
+      <span class="course-hook-title">Learn to decide where AI <em>earns its place</em>.</span>
+      <span class="course-hook-text">88% of AI proofs of concept never reach wide deployment, and the model is rarely the reason. I designed this AI product management programme and made it free for anyone who wants to learn AI product development: whether to use AI, how to test it, what it costs and how to defend the launch. No coding required.</span>
+      <span class="course-hook-cta">Start learning free →</span>
+    </a>
   </div>
   <div class="stats-strip">
     <div class="stat-item">
