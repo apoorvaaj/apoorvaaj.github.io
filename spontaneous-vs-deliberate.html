@@ -148,6 +148,12 @@
     nav { align-items: flex-start; }
     .nav-links { flex-wrap: wrap; justify-content: flex-end; row-gap: 0.4rem; }
   }
+
+  /* Course tab: full name on wide screens, short name on smaller ones */
+  .nav-short { display: none; }
+  @media (max-width: 1100px) { .nav-full { display: none; } .nav-short { display: inline; } }
+  @media (min-width: 769px) and (max-width: 1100px) { .nav-links { gap: 1.4rem; } }
+  @media (min-width: 769px) and (max-width: 880px) { .nav-links { gap: 0.9rem; } }
 </style>
 </head>
 <body>
@@ -160,7 +166,7 @@
     <li><a href="ba-to-ai-consultant.html">My Path</a></li>
     <li><a href="index.html#projects">Projects</a></li>
     <li><a href="index.html#blogs" class="active">Blogs</a></li>
-    <li><a href="why-this-course.html">Why This Course</a></li>
+    <li><a href="learn-ai-product-management.html">Learn AI <span class="nav-full">Product Management</span><span class="nav-short">PM</span></a></li>
     <li><a href="index.html#about">About</a></li>
   </ul>
 </nav>
