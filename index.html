@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apoorva Joshi | AI Solution Consultant &amp; Product Manager</title>
-<meta name="description" content="Apoorva Joshi — AI solution consultant (presales) and product manager in Singapore. Recent work in multi-agent AI, LLM guardrails and RAG, built on 12 years across presales, product and analytics in healthcare, finance and enterprise technology.">
+<meta name="description" content="Apoorva Joshi — AI solution consultant (presales) and product manager in Singapore. Recent work in multi-agent AI, LLM guardrails and RAG, built on 12 years across presales, product and analytics in healthcare payers and providers, insurance, retail and credit cards.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Apoorva Joshi | AI Solution Consultant &amp; Product Manager">
-<meta property="og:description" content="AI solution consultant (presales) and product manager. Multi-agent AI, LLM guardrails and RAG projects, built on 12 years across healthcare, finance and enterprise technology.">
+<meta property="og:description" content="AI solution consultant (presales) and product manager. Multi-agent AI, LLM guardrails and RAG projects, built on 12 years across healthcare payers and providers, insurance, retail and credit cards.">
 <meta property="og:url" content="https://apoorvaaj.github.io/">
 <meta property="og:site_name" content="Apoorva Joshi">
 <meta property="og:image" content="https://apoorvaaj.github.io/preview.png">
@@ -923,6 +923,24 @@
     gap: 0.6rem;
     margin-top: 2rem;
   }
+  .tag.industry { border-color: rgba(10,113,120,0.4); color: var(--accent); }
+  .domain-sub {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dimmer);
+    margin: 0 0 0.7rem;
+  }
+
+  /* Industry map (About): each industry and where Apoorva worked in it */
+  .domain-map { list-style: none; margin: 0 0 1.2rem; border-top: 1px solid var(--border); }
+  .domain-map li { display: grid; grid-template-columns: 10.5rem 1fr; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+  .domain-name { font-family: var(--serif); font-size: 1.05rem; line-height: 1.3; color: var(--text); }
+  .domain-where { font-size: 0.8rem; color: var(--text-dim); line-height: 1.6; }
+  .domain-where b { font-weight: bold; color: var(--accent); }
+  .domain-note { font-size: 0.82rem; color: var(--text-dim); line-height: 1.7; border-left: 2px solid var(--accent); padding-left: 0.9rem; margin-bottom: 2rem; }
+  .domain-note b { color: var(--text); }
 
   /* SVG Animation for blog visual */
   .data-wave {
@@ -1085,7 +1103,7 @@
     .profile-avatar { width: 96px; margin-bottom: 0; grid-row: span 2; }
     .avatar-placeholder { font-size: 2.2rem; }
     .profile-avatar::before, .profile-avatar::after { width: 18px; height: 18px; }
-    .profile-meta, .profile-left .domain-tags { grid-column: 1 / -1; }
+    .profile-meta, .profile-left .domain-tags, .profile-left .domain-sub { grid-column: 1 / -1; }
     .profile-meta { margin-top: 1rem; }
     .edu-grid { margin-bottom: 2rem; }
 
@@ -1120,6 +1138,7 @@
     /* About */
     .about-grid { gap: 2.5rem; margin-bottom: 3rem; }
     .about-intro { font-size: 1.3rem; }
+    .domain-map li { grid-template-columns: 1fr; gap: 0.2rem; }
     .about-values { margin-bottom: 3rem; }
     .value-card { padding: 1.4rem; }
     .contact-strip { padding: 1.6rem 1.3rem; gap: 1.2rem; }
@@ -1148,7 +1167,7 @@
     .skill-bar-fill { width: var(--pct) !important; }
     .edu-card, .value-card, .project-card:not(.recent) { break-inside: avoid; }
     .project-card { box-shadow: none; }
-    .highlights li, .timeline-item { break-inside: avoid; }
+    .highlights li, .timeline-item, .domain-map li { break-inside: avoid; }
   }
 </style>
 </head>
@@ -1181,7 +1200,7 @@
       <span class="italic">earns</span> its<br>
       <span class="dim">place.</span>
     </h1>
-    <p class="home-subtitle has-note">I find where AI genuinely adds value, design it so people can trust it, and build the proof. 12 years across business analysis, presales and product in healthcare, finance and enterprise technology.</p>
+    <p class="home-subtitle has-note">I find where AI genuinely adds value, design it so people can trust it, and build the proof. 12 years across business analysis, presales and product, in healthcare payers and providers, insurance, retail and credit cards.</p>
     <a class="gap-note" href="seven-years.html"><b>2019–2026: a career break, by choice.</b><span>Read why →</span></a>
     <div class="home-tags">
       <span class="tag" style="border-color:rgba(10,113,120,0.4); color:var(--accent);">Solution Consulting</span>
@@ -1190,7 +1209,7 @@
       <span class="tag" style="border-color:rgba(10,113,120,0.4); color:var(--accent);">LLM · RAG</span>
       <span class="tag">Presales &amp; RFPs</span>
       <span class="tag">Business Analysis</span>
-      <span class="tag">Healthcare IT</span>
+      <span class="tag">Cross-Industry Solutions</span>
       <span class="tag">Machine Learning</span>
     </div>
     <div class="home-ctas">
@@ -1234,7 +1253,15 @@
           MITB Analytics · GPA 3.65<br>
           B.Eng Electrical · First Class
         </div>
-        <div class="domain-tags" style="margin-top:1.5rem;">
+        <div class="domain-sub" style="margin-top:1.5rem;">Industries</div>
+        <div class="domain-tags" style="margin-top:0;">
+          <span class="tag industry" style="font-size:0.65rem;">Healthcare Payers &amp; Providers</span>
+          <span class="tag industry" style="font-size:0.65rem;">Insurance</span>
+          <span class="tag industry" style="font-size:0.65rem;">Retail</span>
+          <span class="tag industry" style="font-size:0.65rem;">Credit Cards</span>
+        </div>
+        <div class="domain-sub" style="margin-top:1.3rem;">Tools &amp; Tech</div>
+        <div class="domain-tags" style="margin-top:0;">
           <span class="tag" style="font-size:0.65rem;">Python</span>
           <span class="tag" style="font-size:0.65rem;">Claude API</span>
           <span class="tag" style="font-size:0.65rem;">RAG</span>
@@ -1244,7 +1271,7 @@
           <span class="tag" style="font-size:0.65rem;">SQL</span>
           <span class="tag" style="font-size:0.65rem;">Tableau</span>
           <span class="tag" style="font-size:0.65rem;">AWS</span>
-          <span class="tag" style="font-size:0.65rem;">HL7</span>
+          <span class="tag" style="font-size:0.65rem;">HL7 · EDI</span>
           <span class="tag" style="font-size:0.65rem;">IoT</span>
         </div>
         <a class="btn-primary btn-link resume-btn" href="Apoorva_Joshi_Resume.pdf" target="_blank" rel="noopener" onclick="trackResume()">Download Resume (PDF) ↓</a>
@@ -1271,7 +1298,7 @@
           <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Business Analysis &amp; Requirements</span><span class="skill-bar-pct">95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="95"></div></div></div>
           <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Solution Consulting &amp; Presales</span><span class="skill-bar-pct">87%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="87"></div></div></div>
           <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">AI Agents · RAG · LLM Evaluation</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="85"></div></div></div>
-          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Healthcare IT / HL7 / EHR</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="88"></div></div></div>
+          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Industry Domains · Healthcare · Insurance · Retail · Cards</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="88"></div></div></div>
           <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Machine Learning &amp; Data Science</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="90"></div></div></div>
           <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Data Visualisation &amp; Storytelling</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="85"></div></div></div>
         </div>
@@ -1294,37 +1321,37 @@
           <div class="timeline-item">
             <div class="timeline-date">Oct 2017 – Dec 2018</div>
             <div class="timeline-title">Data Analyst (SMU Scholar)</div>
-            <div class="timeline-org">Changi General Hospital</div>
+            <div class="timeline-org">Changi General Hospital · Healthcare provider</div>
             <div class="timeline-desc">Data mining, CEO dashboards, healthcare registries, regulatory reporting for MOH, and analytics evangelism across the hospital.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">Oct 2013 – Mar 2015</div>
-            <div class="timeline-title">Presales Consultant</div>
-            <div class="timeline-org">TIBCO Software</div>
-            <div class="timeline-desc">Business-technology alignment across telecom, insurance, healthcare and retail. Solution design, RFP responses, and lead-lag analysis for sales strategy.</div>
+            <div class="timeline-title">Presales Consultant · Cross-Industry</div>
+            <div class="timeline-org">TIBCO Software · Telecom · Insurance · Healthcare · Retail</div>
+            <div class="timeline-desc">A cross-industry role covering telecom, insurance, healthcare and retail customers, bringing the domain knowledge from my earlier insurance, healthcare and retail delivery work into each customer conversation. Translated each industry's business problems into TIBCO integration and analytics solutions, led solution design and RFP responses, and used lead-lag analysis to direct sales effort.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">Aug 2012 – Oct 2013</div>
             <div class="timeline-title">Healthcare Consultant &amp; Business Analyst</div>
-            <div class="timeline-org">CitiusTech</div>
+            <div class="timeline-org">CitiusTech · Healthcare payers &amp; providers</div>
             <div class="timeline-desc">Managed Healthcare BI product engagement; designed dashboards for regulatory compliance; data model for clinical data repository; Agile delivery.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">May 2010 – May 2011</div>
             <div class="timeline-title">Project Manager</div>
-            <div class="timeline-org">Syntel Inc.</div>
+            <div class="timeline-org">Syntel Inc. · Credit cards (American Express)</div>
             <div class="timeline-desc">Delivered AMEX JAPA mainframe project at CMMi Level 5. Awarded AMEX Star Performer for on-time, on-budget delivery.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">Oct 2006 – Dec 2008</div>
             <div class="timeline-title">Business Analyst</div>
-            <div class="timeline-org">Target Corporation</div>
+            <div class="timeline-org">Target Corporation · Retail</div>
             <div class="timeline-desc">IT project charters and requirements for finance department. FPA and WBS-based estimation; use cases, wireframes, and stakeholder liaison.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">Aug 2002 – Oct 2006</div>
             <div class="timeline-title">Programmer Analyst</div>
-            <div class="timeline-org">Infosys Technologies</div>
+            <div class="timeline-org">Infosys Technologies · Healthcare payers · Insurance</div>
             <div class="timeline-desc">Led development projects for Aetna, Anthem BCBS and MetLife. Improved Aetna auto adjudication rate by ~30%.</div>
           </div>
         </div>
@@ -1866,24 +1893,28 @@
         </div>
         <div class="about-body">
           <p>My career spans the full arc of data work: from writing COBOL for insurance claims in Pune to building deep learning models at Singapore Management University. That breadth is intentional. I believe great solutions start with understanding the business first.</p>
-          <p>At Changi General Hospital, I saw first-hand how the right dashboard could shift a clinical decision. At TIBCO and CitiusTech, I learned to translate algorithmic thinking into board-room language. Both skills matter equally.</p>
-          <p>As a product owner, I listen to my end-users, understand their pain points, bridge the gap between business and technology by creating products that not only meet requirements but exceeds expectations.</p>
-          <p>I'm drawn to healthcare IT — where the stakes of getting analytics right are highest, and where data can genuinely extend and improve lives.</p>
+          <p>I've done that across four industries: healthcare payers and providers, insurance, retail and credit cards. At Target I wrote requirements for a retailer's finance function; at Syntel I delivered for American Express; at CitiusTech and Changi General Hospital I saw first-hand how the right dashboard could shift a clinical decision.</p>
+          <p>TIBCO brought it together. As a presales consultant I moved between telecom, insurance, healthcare and retail customers in the same role, translating each industry's problems into one platform's solutions, in board-room language. It taught me that the industries change, but the discipline of understanding a business before designing for it does not, and that is what I now bring to AI.</p>
         </div>
       </div>
       <div>
-        <div class="section-label">Domain Expertise</div>
-        <div class="domain-tags">
-          <span class="tag">US Healthcare Payer/Provider</span>
+        <div class="section-label">Industry Domains</div>
+        <ul class="domain-map">
+          <li><span class="domain-name">Healthcare payers &amp; providers</span><span class="domain-where">Infosys (Aetna, Anthem BCBS) · CitiusTech · Changi General Hospital · <b>TIBCO</b></span></li>
+          <li><span class="domain-name">Insurance</span><span class="domain-where">Infosys (MetLife) · <b>TIBCO</b></span></li>
+          <li><span class="domain-name">Retail</span><span class="domain-where">Target Corporation · <b>TIBCO</b></span></li>
+          <li><span class="domain-name">Credit cards</span><span class="domain-where">Syntel (American Express)</span></li>
+        </ul>
+        <p class="domain-note"><b>TIBCO spans three of the four</b>, plus telecom: one presales role, four industries, each with its own business problems, buyers and language.</p>
+        <div class="domain-sub">Domain capabilities</div>
+        <div class="domain-tags" style="margin-top:0;">
           <span class="tag">Claims Adjudication</span>
           <span class="tag">Clinical Quality Measures</span>
-          <span class="tag">Meaningful Use</span>
-          <span class="tag">EHR / EMR Integration</span>
-          <span class="tag">HL7 V2.X · CDA · EDI</span>
-          <span class="tag">SNOMED-CT · LOINC · CPT</span>
-          <span class="tag">ACO Analytics</span>
+          <span class="tag">HL7 · CDA · EDI</span>
           <span class="tag">Financial Analytics</span>
           <span class="tag">Regulatory Reporting</span>
+          <span class="tag">Cross-Industry Presales</span>
+          <span class="tag">Solution Design &amp; RFPs</span>
         </div>
       </div>
     </div>
@@ -1903,14 +1934,14 @@
         <div class="value-card">
           <span class="value-icon">◉</span>
           <div class="value-title">Impact</div>
-          <div class="value-desc">I measure success by outcomes, not outputs. Whether it's a 30% improvement in adjudication rates or reducing clinical blindspots, results matter.</div>
+          <div class="value-desc">I measure success by outcomes, not outputs. Whether it's a 30% improvement in adjudication rates or an on-time, on-budget delivery for American Express, results matter.</div>
         </div>
       </div>
     </div>
     <div class="contact-strip">
       <div>
         <div class="contact-title">Let's Connect</div>
-        <div class="contact-sub">Open to AI solution consulting, presales and product management roles — and to conversations about applied AI in healthcare and financial services.</div>
+        <div class="contact-sub">Open to AI solution consulting, presales and product management roles — and to conversations about applied AI in healthcare, insurance, retail and financial services.</div>
       </div>
       <div class="contact-actions">
         <button type="button" class="btn-primary" onclick="window.open('https://www.linkedin.com/in/apoorva-joshi','_blank','noopener')">LinkedIn →</button>
