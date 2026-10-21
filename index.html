@@ -1209,6 +1209,51 @@
     .course-hook-cta { grid-column: 1; grid-row: auto; text-align: center; margin-top: 0.7rem; }
   }
   @media print { .course-hook { display: none !important; } }
+
+  /* ==================== MY PROFILE (Profile + About merged) ==================== */
+  #profile .about-intro { font-size: 1.35rem; margin-bottom: 1.4rem; }
+  #profile .about-body { margin-bottom: 3rem; }
+  .profile-actions { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
+  .profile-actions .btn-link { width: 100%; }
+  .now-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 3rem; }
+  .now-card { display: flex; flex-direction: column; gap: 0.7rem; text-decoration: none; color: inherit; background: var(--surface);
+              border: 1px solid var(--border); border-top: 3px solid var(--accent3); padding: 1.5rem 1.5rem 1.4rem;
+              transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+  .now-card.course { border-color: rgba(10,113,120,0.35); border-top-color: var(--accent); background: linear-gradient(135deg, var(--surface) 0%, rgba(10,113,120,0.07) 100%); }
+  .now-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,34,64,0.08); }
+  .now-kicker { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: bold; }
+  .now-card:not(.course) .now-kicker { color: var(--accent3); }
+  .now-kicker .badge { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+  .now-title { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; line-height: 1.25; color: var(--text); }
+  .now-text { font-size: 0.82rem; line-height: 1.7; color: var(--text-dim); }
+  .now-list { display: flex; flex-direction: column; gap: 0.55rem; }
+  .now-list span { position: relative; padding-left: 1rem; font-size: 0.82rem; line-height: 1.6; color: var(--text-dim); }
+  .now-list span::before { content: '◆'; position: absolute; left: 0; top: 0.1rem; font-size: 0.5rem; color: var(--accent3); }
+  .now-list b { color: var(--text); }
+  .now-cta { margin-top: auto; padding-top: 0.4rem; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+  .pm-intro { font-size: 0.85rem; color: var(--text-dim); margin: -1.2rem 0 1.4rem; }
+  .pm-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); border-left: 1px solid var(--border); margin-bottom: 3rem; }
+  .pm-item { padding: 1.2rem 1.3rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); }
+  .pm-item.highlight { background: linear-gradient(135deg, var(--surface) 0%, rgba(10,113,120,0.08) 100%); }
+  .pm-title { font-size: 0.86rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+  .pm-item p { font-size: 0.8rem; line-height: 1.65; color: var(--text-dim); margin-bottom: 0.6rem; }
+  .pm-item a { font-size: 0.72rem; color: var(--accent); text-decoration: none; }
+  .pm-item a:hover { text-decoration: underline; }
+  #profile .values-grid { margin-bottom: 3rem; }
+  .profile-cta { grid-template-columns: 1fr; gap: 1.4rem; padding: 2rem 2.2rem; }
+  .profile-cta .contact-title { font-size: 1.9rem; }
+  #profile .value-card { padding: 1.4rem; }
+  @media (max-width: 1000px) { #profile .values-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) {
+    .now-grid, .pm-grid { grid-template-columns: 1fr; }
+    .now-card:hover { transform: none; }
+    .profile-actions { grid-column: 1 / -1; }
+    #profile .about-intro { font-size: 1.2rem; }
+  }
+  @media print {
+    .profile-actions, .profile-cta .contact-actions { display: none !important; }
+    .now-card, .pm-item { break-inside: avoid; }
+  }
 </style>
 </head>
 <body>
@@ -1219,12 +1264,12 @@
   <div class="nav-logo">AJ<span> / Portfolio</span></div>
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home');return false;" class="active" id="nav-home">Home</a></li>
-    <li><a href="#" onclick="showPage('profile');return false;" id="nav-profile">Profile</a></li>
+    <li><a href="#" onclick="showPage('profile');return false;" id="nav-profile">My Profile</a></li>
     <li><a href="ba-to-ai-consultant.html" id="nav-path">My Path</a></li>
     <li><a href="#" onclick="showPage('projects');return false;" id="nav-projects">Projects</a></li>
     <li><a href="#" onclick="showPage('blogs');return false;" id="nav-blogs">Blogs</a></li>
     <li><a href="learn-ai-product-management.html" id="nav-course">Learn AI <span class="nav-full">Product Management</span><span class="nav-short">PM</span></a></li>
-    <li><a href="#" onclick="showPage('about');return false;" id="nav-about">About</a></li>
+    <li><a href="connect.html" id="nav-connect">Connect</a></li>
   </ul>
 </nav>
 
@@ -1285,7 +1330,8 @@
   </div>
 </div>
 
-<!-- ==================== PROFILE ==================== -->
+<!-- ==================== MY PROFILE ==================== -->
+<!-- Profile and About merged into one page. "Connect" is now its own page: connect.html -->
 <div class="page" id="profile">
   <div class="section">
     <div class="profile-grid">
@@ -1300,14 +1346,7 @@
           MITB Analytics · GPA 3.65<br>
           B.Eng Electrical · First Class
         </div>
-        <div class="domain-sub" style="margin-top:1.5rem;">Industries</div>
-        <div class="domain-tags" style="margin-top:0;">
-          <span class="tag industry" style="font-size:0.65rem;">Healthcare Payers &amp; Providers</span>
-          <span class="tag industry" style="font-size:0.65rem;">Insurance</span>
-          <span class="tag industry" style="font-size:0.65rem;">Retail</span>
-          <span class="tag industry" style="font-size:0.65rem;">Credit Cards</span>
-        </div>
-        <div class="domain-sub" style="margin-top:1.3rem;">Tools &amp; Tech</div>
+        <div class="domain-sub" style="margin-top:1.5rem;">Tools &amp; Tech</div>
         <div class="domain-tags" style="margin-top:0;">
           <span class="tag" style="font-size:0.65rem;">Python</span>
           <span class="tag" style="font-size:0.65rem;">Claude API</span>
@@ -1321,21 +1360,88 @@
           <span class="tag" style="font-size:0.65rem;">HL7 · EDI</span>
           <span class="tag" style="font-size:0.65rem;">IoT</span>
         </div>
-        <a class="btn-primary btn-link resume-btn" href="Apoorva_Joshi_Resume.pdf" target="_blank" rel="noopener" onclick="trackResume()">Download Resume (PDF) ↓</a>
+        <div class="profile-actions">
+          <a class="btn-primary btn-link" href="Apoorva_Joshi_Resume.pdf" target="_blank" rel="noopener" onclick="trackResume()">Download Resume (PDF) ↓</a>
+          <a class="btn-secondary btn-link" href="connect.html">Get in touch →</a>
+        </div>
       </div>
       <div class="profile-right">
-        <!-- Education -->
-        <div class="section-label">Education</div>
-        <div class="edu-grid">
-          <div class="edu-card">
-            <div class="edu-degree">Master of IT in Business</div>
-            <div class="edu-school">Singapore Management University · 2017</div>
-            <span class="edu-badge">Analytics · GPA 3.65</span>
+
+        <!-- Intro (from the former About page) -->
+        <div class="section-label">My Profile</div>
+        <div class="about-intro">
+          I'm a solution consultant and product manager who has spent 12 years making <em>complex systems</em> understandable — to customers, executives and engineers alike.
+        </div>
+        <div class="about-body">
+          <p>My career spans the full arc of data work: from writing COBOL for insurance claims in Pune to building deep learning models at Singapore Management University. That breadth is intentional. I believe great solutions start with understanding the business first.</p>
+          <p>I've done that across four industries: healthcare payers and providers, insurance, retail and credit cards. At Target I wrote requirements for a retailer's finance function; at Syntel I delivered for American Express; at CitiusTech and Changi General Hospital I saw first-hand how the right dashboard could shift a clinical decision.</p>
+          <p>TIBCO brought it together. As a presales consultant I moved between telecom, insurance, healthcare and retail customers in the same role, translating each industry's problems into one platform's solutions, in board-room language. It taught me that the industries change, but the discipline of understanding a business before designing for it does not, and that is what I now bring to AI.</p>
+        </div>
+
+        <!-- Current work -->
+        <div class="section-label">What I'm Working On Now</div>
+        <div class="now-grid">
+          <a class="now-card course" href="learn-ai-product-management.html" onclick="gcEvent('profile-course-card', 'Profile course card clicked')">
+            <span class="now-kicker"><span class="badge">FREE</span>Course designer · 14 weeks</span>
+            <span class="now-title">I designed an AI Product Management programme</span>
+            <span class="now-text">A 14-week programme that teaches business analysts, data analysts and product managers to lead AI products: whether to use AI, how to specify behaviour that varies, how to test it, what it costs, how to govern it and how to defend the launch. Learners finish with twelve graded work products and a launch decision defended to a mock executive panel. I made it free for anyone who wants to learn AI product development.</span>
+            <span class="now-cta">See the programme →</span>
+          </a>
+          <a class="now-card" href="#projects" onclick="showPage('projects');return false;">
+            <span class="now-kicker">Product Owner · Self-employed · Dec 2025 – present</span>
+            <span class="now-title">I own three AI products end to end</span>
+            <span class="now-list">
+              <span><b>Quaestio</b> · question-only AI feedback for student research, in development with a channel partner</span>
+              <span><b>BeatKeeper</b> · multi-agent content campaign system, working prototype</span>
+              <span><b>MealPartner</b> · WhatsApp RAG meal assistant, system design</span>
+            </span>
+            <span class="now-cta">See the projects →</span>
+          </a>
+        </div>
+
+        <!-- Product management, with evidence -->
+        <div class="section-label">Product Management, In Practice</div>
+        <p class="pm-intro">Each skill below links to the work that shows it.</p>
+        <div class="pm-grid">
+          <div class="pm-item">
+            <div class="pm-title">Problem framing &amp; discovery</div>
+            <p>Quaestio started from why students avoid AI feedback: fear that their draft is kept, or that AI words creep in. The product is designed around that fear, not a feature list.</p>
+            <a href="feedback-without-fear.html">Feedback Without Fear →</a>
           </div>
-          <div class="edu-card">
-            <div class="edu-degree">B.Eng — Electrical</div>
-            <div class="edu-school">Govt. College of Engineering, Pune · 2001</div>
-            <span class="edu-badge">First Class with Distinction</span>
+          <div class="pm-item">
+            <div class="pm-title">Specification</div>
+            <p>Five principles, more than 230 numbered and testable requirements, 28 acceptance criteria and a dated decision log for Quaestio, all before any code.</p>
+            <a href="building-quaestio.html">Building Quaestio →</a>
+          </div>
+          <div class="pm-item">
+            <div class="pm-title">Unit economics &amp; pricing</div>
+            <p>Priced a Quaestio review one model call at a time, showed how model routing halves the cost, and built per-student licensing on the costed review.</p>
+            <a href="what-does-a-question-cost.html">What Does a Question Cost? →</a>
+          </div>
+          <div class="pm-item">
+            <div class="pm-title">Evaluation &amp; quality</div>
+            <p>Golden-dataset evals for BeatKeeper, and citation-enforced output: a factual claim without a stored source cannot be approved.</p>
+            <a href="#projects" onclick="showPage('projects');return false;">BeatKeeper →</a>
+          </div>
+          <div class="pm-item">
+            <div class="pm-title">Responsible AI &amp; guardrails</div>
+            <p>Guardrails enforced by structure rather than by prompt: no free-text channel in Quaestio, mandatory human checkpoints in BeatKeeper, nothing changes in Attic until the user approves.</p>
+            <a href="who-taught-it-what-to-ask.html">Who Taught It What to Ask? →</a>
+          </div>
+          <div class="pm-item">
+            <div class="pm-title">Go-to-market &amp; partnerships</div>
+            <p>Taking Quaestio to schools with a channel partner, as a school-authorised web app with per-student licensing and Singapore hosting at launch.</p>
+            <a href="#projects" onclick="showPage('projects');return false;">Quaestio →</a>
+          </div>
+          <div class="pm-item">
+            <div class="pm-title">Requirements-first delivery</div>
+            <p>Built MealPartner requirements-first and test by test, then compared it honestly with a build that followed the idea, in a two-part series.</p>
+            <a href="spontaneous-vs-deliberate.html">Spontaneous vs Deliberate →</a>
+          </div>
+          <div class="pm-item highlight">
+            <div class="pm-title">Teaching the discipline</div>
+            <p>Designed a 14-week AI product management programme: twelve graded work products, a viva at the end of every module and an executive-panel capstone.</p>
+            <a href="learn-ai-product-management.html">Learn AI Product Management →</a>
           </div>
         </div>
 
@@ -1357,7 +1463,7 @@
             <div class="timeline-date">Dec 2025 – Present</div>
             <div class="timeline-title">Product Owner · AI Products</div>
             <div class="timeline-org">Self-employed</div>
-            <div class="timeline-desc">Own three AI products end to end, from problem framing and requirements to architecture, guardrails, evaluation and go-to-market: Quaestio, a question-only AI feedback platform for student research coursework, now in development with a channel partner; BeatKeeper, a multi-agent content campaign system with golden-dataset evals; and MealPartner, a RAG meal assistant on WhatsApp for university students. <a href="#projects" onclick="showPage('projects');return false;">See the projects →</a></div>
+            <div class="timeline-desc">Own three AI products end to end, from problem framing and requirements to architecture, guardrails, evaluation and go-to-market: Quaestio, a question-only AI feedback platform for student research coursework, now in development with a channel partner; BeatKeeper, a multi-agent content campaign system with golden-dataset evals; and MealPartner, a RAG meal assistant on WhatsApp for university students. Also designed a free 14-week <a href="learn-ai-product-management.html">AI Product Management programme</a>. <a href="#projects" onclick="showPage('projects');return false;">See the projects →</a></div>
           </div>
           <div class="timeline-item">
             <div class="timeline-date">2019 – 2025</div>
@@ -1400,6 +1506,73 @@
             <div class="timeline-title">Programmer Analyst</div>
             <div class="timeline-org">Infosys Technologies · Healthcare payers · Insurance</div>
             <div class="timeline-desc">Led development projects for Aetna, Anthem BCBS and MetLife. Improved Aetna auto adjudication rate by ~30%.</div>
+          </div>
+        </div>
+
+        <!-- Industry domains (from the former About page) -->
+        <div class="section-label">Industry Domains</div>
+        <ul class="domain-map">
+          <li><span class="domain-name">Healthcare payers &amp; providers</span><span class="domain-where">Infosys (Aetna, Anthem BCBS) · CitiusTech · Changi General Hospital · <b>TIBCO</b></span></li>
+          <li><span class="domain-name">Insurance</span><span class="domain-where">Infosys (MetLife) · <b>TIBCO</b></span></li>
+          <li><span class="domain-name">Retail</span><span class="domain-where">Target Corporation · <b>TIBCO</b></span></li>
+          <li><span class="domain-name">Credit cards</span><span class="domain-where">Syntel (American Express)</span></li>
+        </ul>
+        <p class="domain-note"><b>TIBCO spans three of the four</b>, plus telecom: one presales role, four industries, each with its own business problems, buyers and language.</p>
+        <div class="domain-sub">Domain capabilities</div>
+        <div class="domain-tags" style="margin-top:0; margin-bottom:3rem;">
+          <span class="tag">Claims Adjudication</span>
+          <span class="tag">Clinical Quality Measures</span>
+          <span class="tag">HL7 · CDA · EDI</span>
+          <span class="tag">Financial Analytics</span>
+          <span class="tag">Regulatory Reporting</span>
+          <span class="tag">Cross-Industry Presales</span>
+          <span class="tag">Solution Design &amp; RFPs</span>
+        </div>
+
+        <!-- Education -->
+        <div class="section-label">Education</div>
+        <div class="edu-grid">
+          <div class="edu-card">
+            <div class="edu-degree">Master of IT in Business</div>
+            <div class="edu-school">Singapore Management University · 2017</div>
+            <span class="edu-badge">Analytics · GPA 3.65</span>
+          </div>
+          <div class="edu-card">
+            <div class="edu-degree">B.Eng — Electrical</div>
+            <div class="edu-school">Govt. College of Engineering, Pune · 2001</div>
+            <span class="edu-badge">First Class with Distinction</span>
+          </div>
+        </div>
+
+        <!-- Values (from the former About page) -->
+        <div class="section-label">What I Value</div>
+        <div class="values-grid">
+          <div class="value-card">
+            <span class="value-icon">◈</span>
+            <div class="value-title">Rigour</div>
+            <div class="value-desc">Every model, every dashboard, every recommendation deserves careful validation. Gut feeling is a starting point, not an end point.</div>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">⌬</span>
+            <div class="value-title">Clarity</div>
+            <div class="value-desc">The most sophisticated analysis is worthless if it can't be communicated. I obsess over making complex findings simple — not simplistic.</div>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">◉</span>
+            <div class="value-title">Impact</div>
+            <div class="value-desc">I measure success by outcomes, not outputs. Whether it's a 30% improvement in adjudication rates or an on-time, on-budget delivery for American Express, results matter.</div>
+          </div>
+        </div>
+
+        <!-- Closing call to action -->
+        <div class="contact-strip profile-cta">
+          <div>
+            <div class="contact-title">Let's Connect</div>
+            <div class="contact-sub">Open to AI solution consulting, presales and product management roles — and to conversations about applied AI in healthcare, insurance, retail and financial services.</div>
+          </div>
+          <div class="contact-actions">
+            <a class="btn-primary btn-link" href="connect.html">Get in touch →</a>
+            <a class="btn-secondary btn-link" href="Apoorva_Joshi_Resume.pdf" target="_blank" rel="noopener" onclick="trackResume()">Resume (PDF) ↓</a>
           </div>
         </div>
       </div>
@@ -1929,75 +2102,6 @@
   </div>
 </div>
 
-<!-- ==================== ABOUT ==================== -->
-<div class="page" id="about">
-  <div class="section">
-    <div class="section-label">About Me</div>
-    <div class="about-grid">
-      <div>
-        <div class="about-intro">
-          I'm a solution consultant and product manager who has spent 12 years making <em>complex systems</em> understandable — to customers, executives and engineers alike.
-        </div>
-        <div class="about-body">
-          <p>My career spans the full arc of data work: from writing COBOL for insurance claims in Pune to building deep learning models at Singapore Management University. That breadth is intentional. I believe great solutions start with understanding the business first.</p>
-          <p>I've done that across four industries: healthcare payers and providers, insurance, retail and credit cards. At Target I wrote requirements for a retailer's finance function; at Syntel I delivered for American Express; at CitiusTech and Changi General Hospital I saw first-hand how the right dashboard could shift a clinical decision.</p>
-          <p>TIBCO brought it together. As a presales consultant I moved between telecom, insurance, healthcare and retail customers in the same role, translating each industry's problems into one platform's solutions, in board-room language. It taught me that the industries change, but the discipline of understanding a business before designing for it does not, and that is what I now bring to AI.</p>
-        </div>
-      </div>
-      <div>
-        <div class="section-label">Industry Domains</div>
-        <ul class="domain-map">
-          <li><span class="domain-name">Healthcare payers &amp; providers</span><span class="domain-where">Infosys (Aetna, Anthem BCBS) · CitiusTech · Changi General Hospital · <b>TIBCO</b></span></li>
-          <li><span class="domain-name">Insurance</span><span class="domain-where">Infosys (MetLife) · <b>TIBCO</b></span></li>
-          <li><span class="domain-name">Retail</span><span class="domain-where">Target Corporation · <b>TIBCO</b></span></li>
-          <li><span class="domain-name">Credit cards</span><span class="domain-where">Syntel (American Express)</span></li>
-        </ul>
-        <p class="domain-note"><b>TIBCO spans three of the four</b>, plus telecom: one presales role, four industries, each with its own business problems, buyers and language.</p>
-        <div class="domain-sub">Domain capabilities</div>
-        <div class="domain-tags" style="margin-top:0;">
-          <span class="tag">Claims Adjudication</span>
-          <span class="tag">Clinical Quality Measures</span>
-          <span class="tag">HL7 · CDA · EDI</span>
-          <span class="tag">Financial Analytics</span>
-          <span class="tag">Regulatory Reporting</span>
-          <span class="tag">Cross-Industry Presales</span>
-          <span class="tag">Solution Design &amp; RFPs</span>
-        </div>
-      </div>
-    </div>
-    <div class="about-values">
-      <div class="section-label">What I Value</div>
-      <div class="values-grid">
-        <div class="value-card">
-          <span class="value-icon">◈</span>
-          <div class="value-title">Rigour</div>
-          <div class="value-desc">Every model, every dashboard, every recommendation deserves careful validation. Gut feeling is a starting point, not an end point.</div>
-        </div>
-        <div class="value-card">
-          <span class="value-icon">⌬</span>
-          <div class="value-title">Clarity</div>
-          <div class="value-desc">The most sophisticated analysis is worthless if it can't be communicated. I obsess over making complex findings simple — not simplistic.</div>
-        </div>
-        <div class="value-card">
-          <span class="value-icon">◉</span>
-          <div class="value-title">Impact</div>
-          <div class="value-desc">I measure success by outcomes, not outputs. Whether it's a 30% improvement in adjudication rates or an on-time, on-budget delivery for American Express, results matter.</div>
-        </div>
-      </div>
-    </div>
-    <div class="contact-strip">
-      <div>
-        <div class="contact-title">Let's Connect</div>
-        <div class="contact-sub">Open to AI solution consulting, presales and product management roles — and to conversations about applied AI in healthcare, insurance, retail and financial services.</div>
-      </div>
-      <div class="contact-actions">
-        <button type="button" class="btn-primary" onclick="window.open('https://www.linkedin.com/in/apoorva-joshi','_blank','noopener')">LinkedIn →</button>
-        <a class="btn-secondary btn-link" href="Apoorva_Joshi_Resume.pdf" target="_blank" rel="noopener" onclick="trackResume()">Resume (PDF) ↓</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ===== Request Demo form (sent via Web3Forms, protected by hCaptcha) ===== -->
 <div id="demo-overlay" class="demo-overlay">
 <div id="demo-dialog" class="demo-dialog" role="dialog" aria-modal="true" aria-labelledby="demo-title">
@@ -2182,6 +2286,9 @@
   // Open a section from the address bar, e.g. index.html#blogs (used by links from the article page)
   function pageFromHash() {
     var id = (location.hash || '').replace('#', '');
+    // About was merged into My Profile, and contact moved to its own page (connect.html)
+    if (id === 'about') id = 'profile';
+    if (id === 'connect') { location.replace('connect.html'); return; }
     if (id && document.getElementById(id) && document.getElementById('nav-' + id)) showPage(id);
   }
   window.addEventListener('hashchange', pageFromHash);
