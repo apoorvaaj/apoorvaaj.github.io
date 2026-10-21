@@ -1239,6 +1239,13 @@
   .pm-item p { font-size: 0.8rem; line-height: 1.65; color: var(--text-dim); margin-bottom: 0.6rem; }
   .pm-item a { font-size: 0.72rem; color: var(--accent); text-decoration: none; }
   .pm-item a:hover { text-decoration: underline; }
+  .profile-meta .meta-label { display: block; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.1rem; }
+  .skill-groups { display: grid; gap: 0; border-top: 1px solid var(--border); margin-bottom: 3rem; }
+  .skill-group { display: grid; grid-template-columns: 9rem 1fr; gap: 1.2rem; padding: 1.1rem 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .skill-group-title { font-family: var(--serif); font-size: 1.05rem; color: var(--text); padding-top: 0.2rem; }
+  .skill-group .domain-tags { margin-top: 0; gap: 0.45rem; }
+  .skill-group .tag { font-size: 0.64rem; }
+  @media (max-width: 768px) { .skill-group { grid-template-columns: 1fr; gap: 0.6rem; } }
   #profile .values-grid { margin-bottom: 3rem; }
   .profile-cta { grid-template-columns: 1fr; gap: 1.4rem; padding: 2rem 2.2rem; }
   .profile-cta .contact-title { font-size: 1.9rem; }
@@ -1342,23 +1349,9 @@
         <div class="profile-name">Apoorva Joshi</div>
         <div class="profile-role">AI Solution Consultant (Presales) · Product Manager</div>
         <div class="profile-meta">
-          Singapore · Dependent Pass<br>
-          MITB Analytics · GPA 3.65<br>
-          B.Eng Electrical · First Class
-        </div>
-        <div class="domain-sub" style="margin-top:1.5rem;">Tools &amp; Tech</div>
-        <div class="domain-tags" style="margin-top:0;">
-          <span class="tag" style="font-size:0.65rem;">Python</span>
-          <span class="tag" style="font-size:0.65rem;">Claude API</span>
-          <span class="tag" style="font-size:0.65rem;">RAG</span>
-          <span class="tag" style="font-size:0.65rem;">Node.js</span>
-          <span class="tag" style="font-size:0.65rem;">R</span>
-          <span class="tag" style="font-size:0.65rem;">Keras / TF</span>
-          <span class="tag" style="font-size:0.65rem;">SQL</span>
-          <span class="tag" style="font-size:0.65rem;">Tableau</span>
-          <span class="tag" style="font-size:0.65rem;">AWS</span>
-          <span class="tag" style="font-size:0.65rem;">HL7 · EDI</span>
-          <span class="tag" style="font-size:0.65rem;">IoT</span>
+          <span class="meta-label">Work authorisation</span>
+          Singapore · Dependent Pass / Letter of Consent<br>
+          India · Full Work Permit
         </div>
         <div class="profile-actions">
           <a class="btn-primary btn-link" href="Apoorva_Joshi_Resume.pdf" target="_blank" rel="noopener" onclick="trackResume()">Download Resume (PDF) ↓</a>
@@ -1445,15 +1438,60 @@
           </div>
         </div>
 
-        <!-- Skills -->
+        <!-- Skills: grouped into three lists -->
         <div class="section-label">Core Skills</div>
-        <div class="skill-bar-group">
-          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Business Analysis &amp; Requirements</span><span class="skill-bar-pct">95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="95"></div></div></div>
-          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Solution Consulting &amp; Presales</span><span class="skill-bar-pct">87%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="87"></div></div></div>
-          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">AI Agents · RAG · LLM Evaluation</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="85"></div></div></div>
-          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Industry Domains · Healthcare · Insurance · Retail · Cards</span><span class="skill-bar-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="88"></div></div></div>
-          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Machine Learning &amp; Data Science</span><span class="skill-bar-pct">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="90"></div></div></div>
-          <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-bar-name">Data Visualisation &amp; Storytelling</span><span class="skill-bar-pct">85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-pct="85"></div></div></div>
+        <div class="skill-groups">
+          <div class="skill-group">
+            <div class="skill-group-title">Tools &amp; Tech</div>
+            <div class="domain-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Claude API</span>
+            <span class="tag">AI Agents</span>
+            <span class="tag">RAG</span>
+            <span class="tag">LLM Evaluation</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Deep Learning · Keras / TF</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">R</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">TIBCO Spotfire</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Ollama</span>
+            <span class="tag">IoT</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Domain</div>
+            <div class="domain-tags">
+            <span class="tag">Healthcare Payers &amp; Providers</span>
+            <span class="tag">Insurance</span>
+            <span class="tag">Retail</span>
+            <span class="tag">Credit Cards</span>
+            <span class="tag">Claims Adjudication</span>
+            <span class="tag">Clinical Quality Measures</span>
+            <span class="tag">HL7 · CDA · EDI</span>
+            <span class="tag">Regulatory Reporting</span>
+            <span class="tag">Financial Analytics</span>
+            <span class="tag">Cross-Industry Presales</span>
+            <span class="tag">Solution Design &amp; RFPs</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-title">Soft Skills</div>
+            <div class="domain-tags">
+            <span class="tag">Stakeholder Management</span>
+            <span class="tag">Requirements Workshops</span>
+            <span class="tag">Executive Presentations</span>
+            <span class="tag">Data Storytelling</span>
+            <span class="tag">Product Demonstrations &amp; Training</span>
+            <span class="tag">Team Leadership &amp; Mentoring</span>
+            <span class="tag">Volunteer Leadership</span>
+            <span class="tag">Teaching &amp; Course Design</span>
+            <span class="tag">Published Writing</span>
+            </div>
+          </div>
         </div>
 
         <!-- Experience Timeline -->
@@ -1517,17 +1555,7 @@
           <li><span class="domain-name">Retail</span><span class="domain-where">Target Corporation · <b>TIBCO</b></span></li>
           <li><span class="domain-name">Credit cards</span><span class="domain-where">Syntel (American Express)</span></li>
         </ul>
-        <p class="domain-note"><b>TIBCO spans three of the four</b>, plus telecom: one presales role, four industries, each with its own business problems, buyers and language.</p>
-        <div class="domain-sub">Domain capabilities</div>
-        <div class="domain-tags" style="margin-top:0; margin-bottom:3rem;">
-          <span class="tag">Claims Adjudication</span>
-          <span class="tag">Clinical Quality Measures</span>
-          <span class="tag">HL7 · CDA · EDI</span>
-          <span class="tag">Financial Analytics</span>
-          <span class="tag">Regulatory Reporting</span>
-          <span class="tag">Cross-Industry Presales</span>
-          <span class="tag">Solution Design &amp; RFPs</span>
-        </div>
+        <p class="domain-note" style="margin-bottom:3rem;"><b>TIBCO spans three of the four</b>, plus telecom: one presales role, four industries, each with its own business problems, buyers and language.</p>
 
         <!-- Education -->
         <div class="section-label">Education</div>
