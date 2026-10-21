@@ -130,6 +130,7 @@
 
 
   .cta { margin: 3.2rem 0 0; padding: 2rem; background: var(--surface); border: 1px solid var(--border); }
+  .cta.cta-top { margin: 0 0 2.4rem; border-top: 3px solid var(--accent); }
   .cta h3 { font-family: var(--serif); font-weight: 500; font-size: 1.45rem; margin: 0 0 0.5rem; }
   .cta p { font-size: 0.9rem; margin-bottom: 1.3rem; }
   .cta-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
@@ -225,6 +226,16 @@
   <div class="byline">
     <div class="avatar" aria-hidden="true">AJ</div>
     <div><b>Designed by Apoorva Joshi</b><span>Free and open to anyone who wants to learn AI product development</span></div>
+  </div>
+
+  <!-- Quick access for readers who want to go straight to the course (same card as at the end) -->
+  <div class="cta cta-top">
+    <h3>Start learning, free</h3>
+    <p>I designed this programme and made it free for anyone who wants to learn AI product development. See the full programme: modules, assignments, assessment and how to sign in.</p>
+    <div class="cta-actions">
+      <a class="btn primary" href="https://apoorvaaj.github.io/AIPMCourse" onclick="gcEvent('course-cta-top', 'Course CTA clicked (top)')">Go to the course →</a>
+      <a class="btn secondary" href="ba-to-ai-consultant.html">From business analyst to AI →</a>
+    </div>
   </div>
 
   <aside class="summary" aria-label="Summary">
@@ -371,6 +382,7 @@
   <span>© 2026 Apoorva Joshi · Singapore</span>
 </footer>
 
+<script>function gcEvent(p,t){var gc=window.goatcounter;if(gc&&typeof gc.count==='function')gc.count({path:p,title:t,event:true});}</script>
 <!-- Visitor analytics: GoatCounter -->
 <script data-goatcounter="https://apoorvaaj.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
